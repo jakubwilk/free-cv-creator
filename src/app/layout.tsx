@@ -8,9 +8,9 @@ import '@mantine/spotlight/styles.css';
 import '@mantine/tiptap/styles.css';
 import './globals.css';
 
+import { ColorSchemeScript, createTheme, mantineHtmlProps, MantineProvider } from '@mantine/core';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { ColorSchemeScript, MantineProvider, createTheme, mantineHtmlProps } from '@mantine/core';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
