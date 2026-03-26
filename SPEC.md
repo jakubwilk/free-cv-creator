@@ -216,6 +216,7 @@ Landing
 | Język         | TypeScript               | Bezpieczeństwo typów dla CVData schema                                        |
 | Style         | Tailwind CSS             | Szybka implementacja, spójny design system                                    |
 | Stan globalny | Zustand                  | Lekkie, bez boilerplate, middleware localStorage                              |
+| UI Components | [Mantine](https://mantine.dev/llms-full.txt) | Gotowe, dostępne komponenty (modals, inputs, drag & drop, notifications) |
 | Formularze    | React Hook Form + Zod    | Minimalne re-rendery, walidacja schema-driven, spójna z walidacją JSON        |
 | PDF           | `@react-pdf/renderer`    | Pełna kontrola, spójna jakość cross-browser, tekst selektowalny, ATS-friendly |
 | PWA           | `next-pwa`               | Service Worker, manifest                                                      |
