@@ -36,6 +36,7 @@ Większość dostępnych kreatorów CV jest płatna lub ukrywa kluczowe funkcje 
 ### Rozwiązanie
 
 Narzędzie, które jest:
+
 - **W pełni darmowe** dla standardowego użycia
 - **Privacy-first** — zero danych na serwerze, zero konta
 - **Atrakcyjne wizualnie** — nowoczesne, profesjonalne szablony
@@ -68,6 +69,7 @@ Lista kafelków CV wczytywanych z `cv_index` w localStorage. Każdy kafelek poka
 
 **`/app/new` — Kreator nowego CV**
 Dwuetapowy wizard:
+
 1. Wybór szablonu (galeria z miniaturami)
 2. Wybór języka CV (PL / EN) + nadanie własnej nazwy
 
@@ -78,13 +80,13 @@ Główny widok produktu. Formularz po lewej, live preview A4 po prawej. Nawigacj
 
 ### Modalne okna w edytorze
 
-| Modal | Trigger | Zawartość |
-|---|---|---|
-| Zmiana szablonu | przycisk w toolbarze | galeria miniatur szablonów |
-| Eksport PDF | przycisk "Pobierz PDF" | podgląd przed pobraniem + przycisk potwierdzenia, generowanie przez `@react-pdf/renderer` |
-| Eksport JSON | przycisk "Pobierz JSON" | potwierdzenie + informacja o czyszczeniu localStorage |
-| Import JSON | przycisk "Wczytaj CV" | drop zone na plik JSON |
-| Usuń CV | akcja z dashboardu | potwierdzenie usunięcia |
+| Modal           | Trigger                 | Zawartość                                                                                 |
+| --------------- | ----------------------- | ----------------------------------------------------------------------------------------- |
+| Zmiana szablonu | przycisk w toolbarze    | galeria miniatur szablonów                                                                |
+| Eksport PDF     | przycisk "Pobierz PDF"  | podgląd przed pobraniem + przycisk potwierdzenia, generowanie przez `@react-pdf/renderer` |
+| Eksport JSON    | przycisk "Pobierz JSON" | potwierdzenie + informacja o czyszczeniu localStorage                                     |
+| Import JSON     | przycisk "Wczytaj CV"   | drop zone na plik JSON                                                                    |
+| Usuń CV         | akcja z dashboardu      | potwierdzenie usunięcia                                                                   |
 
 ### Główny przepływ użytkownika
 
@@ -150,15 +152,15 @@ Landing
 
 ## 5. Wymagania niefunkcjonalne
 
-| Kategoria | Wymaganie |
-|---|---|
-| Prywatność | Zero danych użytkownika na serwerze w standardowym trybie |
-| Wydajność | Live preview bez odczuwalnego lag — debounce lub `useDeferredValue` |
-| Dostępność | WCAG AA compliance dla formularzy i nawigacji |
-| Responsywność | Mobile-first, działa na ekranach ≥ 320px |
-| SEO | SSR przez Next.js, meta tagi, Open Graph |
-| Bezpieczeństwo | CSP headers, sanityzacja importowanego JSON |
-| Kompatybilność | Ostatnie 2 wersje Chrome, Firefox, Safari, Edge |
+| Kategoria      | Wymaganie                                                           |
+| -------------- | ------------------------------------------------------------------- |
+| Prywatność     | Zero danych użytkownika na serwerze w standardowym trybie           |
+| Wydajność      | Live preview bez odczuwalnego lag — debounce lub `useDeferredValue` |
+| Dostępność     | WCAG AA compliance dla formularzy i nawigacji                       |
+| Responsywność  | Mobile-first, działa na ekranach ≥ 320px                            |
+| SEO            | SSR przez Next.js, meta tagi, Open Graph                            |
+| Bezpieczeństwo | CSP headers, sanityzacja importowanego JSON                         |
+| Kompatybilność | Ostatnie 2 wersje Chrome, Firefox, Safari, Edge                     |
 
 ---
 
@@ -208,16 +210,16 @@ Landing
 
 ## 7. Stos technologiczny
 
-| Warstwa | Technologia | Uzasadnienie |
-|---|---|---|
-| Framework | Next.js 14+ (App Router) | SSR, SEO, PWA support |
-| Język | TypeScript | Bezpieczeństwo typów dla CVData schema |
-| Style | Tailwind CSS | Szybka implementacja, spójny design system |
-| Stan globalny | Zustand | Lekkie, bez boilerplate, middleware localStorage |
-| Formularze | React Hook Form + Zod | Minimalne re-rendery, walidacja schema-driven, spójna z walidacją JSON |
-| PDF | `@react-pdf/renderer` | Pełna kontrola, spójna jakość cross-browser, tekst selektowalny, ATS-friendly |
-| PWA | `next-pwa` | Service Worker, manifest |
-| Hosting | VPS OVH + Nginx + PM2 | Prywatny serwer, pełna kontrola, Docker-ready |
+| Warstwa       | Technologia              | Uzasadnienie                                                                  |
+| ------------- | ------------------------ | ----------------------------------------------------------------------------- |
+| Framework     | Next.js 14+ (App Router) | SSR, SEO, PWA support                                                         |
+| Język         | TypeScript               | Bezpieczeństwo typów dla CVData schema                                        |
+| Style         | Tailwind CSS             | Szybka implementacja, spójny design system                                    |
+| Stan globalny | Zustand                  | Lekkie, bez boilerplate, middleware localStorage                              |
+| Formularze    | React Hook Form + Zod    | Minimalne re-rendery, walidacja schema-driven, spójna z walidacją JSON        |
+| PDF           | `@react-pdf/renderer`    | Pełna kontrola, spójna jakość cross-browser, tekst selektowalny, ATS-friendly |
+| PWA           | `next-pwa`               | Service Worker, manifest                                                      |
+| Hosting       | VPS OVH + Nginx + PM2    | Prywatny serwer, pełna kontrola, Docker-ready                                 |
 
 ---
 
@@ -238,16 +240,16 @@ Landing
 
 ```typescript
 interface CVListItem {
-  id: string;                  // UUID
-  title: string;               // nazwa nadana przez użytkownika, np. "CV – Senior Dev EN"
-  templateId: string;          // do renderowania miniatury
-  accentColor: string;         // do renderowania miniatury
+  id: string; // UUID
+  title: string; // nazwa nadana przez użytkownika, np. "CV – Senior Dev EN"
+  templateId: string; // do renderowania miniatury
+  accentColor: string; // do renderowania miniatury
   language: 'pl' | 'en';
-  createdAt: string;           // ISO 8601
-  updatedAt: string;           // ISO 8601
+  createdAt: string; // ISO 8601
+  updatedAt: string; // ISO 8601
   // snapshot do podglądu na kafelku
-  previewName: string;         // firstName + lastName
-  previewTitle: string;        // stanowisko z sekcji personal
+  previewName: string; // firstName + lastName
+  previewTitle: string; // stanowisko z sekcji personal
 }
 ```
 
@@ -273,7 +275,7 @@ interface CVData {
 ```typescript
 interface CVMeta {
   id: string;
-  title: string;               // nazwa CV widoczna na liście
+  title: string; // nazwa CV widoczna na liście
   templateId: string;
   accentColor: string;
   language: 'pl' | 'en';
@@ -291,15 +293,15 @@ interface CVMeta {
 interface PersonalInfo {
   firstName: string;
   lastName: string;
-  jobTitle: string;            // np. "Frontend Developer"
+  jobTitle: string; // np. "Frontend Developer"
   email: string;
   phone: string;
-  location: string;            // miasto / kraj
+  location: string; // miasto / kraj
   website?: string;
   linkedin?: string;
   github?: string;
-  summary: string;             // kilka zdań o sobie
-  photo?: string;              // base64
+  summary: string; // kilka zdań o sobie
+  photo?: string; // base64
 }
 ```
 
@@ -311,20 +313,20 @@ Każda sekcja ma wspólny wrapper z metadanymi (widoczność, tytuł nadpisany p
 
 ```typescript
 interface CVSections {
-  experience:     Section<ExperienceItem>;
-  education:      Section<EducationItem>;
-  skills:         Section<SkillGroupItem>;
-  languages:      Section<LanguageItem>;
+  experience: Section<ExperienceItem>;
+  education: Section<EducationItem>;
+  skills: Section<SkillGroupItem>;
+  languages: Section<LanguageItem>;
   certifications: Section<CertificationItem>;
-  projects:       Section<ProjectItem>;
-  courses:        Section<CourseItem>;
-  volunteer:      Section<VolunteerItem>;
-  interests:      Section<InterestItem>;
-  custom:         CustomSection[];          // sekcje definiowane przez użytkownika
+  projects: Section<ProjectItem>;
+  courses: Section<CourseItem>;
+  volunteer: Section<VolunteerItem>;
+  interests: Section<InterestItem>;
+  custom: CustomSection[]; // sekcje definiowane przez użytkownika
 }
 
 interface Section<T> {
-  title: string;               // domyślny tytuł lub nadpisany przez użytkownika
+  title: string; // domyślny tytuł lub nadpisany przez użytkownika
   visible: boolean;
   items: T[];
 }
@@ -338,12 +340,12 @@ interface Section<T> {
 // --- Doświadczenie ---
 interface ExperienceItem {
   id: string;
-  position: string;            // stanowisko
+  position: string; // stanowisko
   company: string;
   location?: string;
-  startDate: string;           // YYYY-MM
+  startDate: string; // YYYY-MM
   endDate: string | 'present';
-  description: string;         // opis, bullet pointy
+  description: string; // opis, bullet pointy
   highlights?: string[];
   visible: boolean;
 }
@@ -351,12 +353,12 @@ interface ExperienceItem {
 // --- Wykształcenie ---
 interface EducationItem {
   id: string;
-  institution: string;         // nazwa uczelni / szkoły
-  degree: string;              // np. "Licencjat", "Magister"
-  field: string;               // kierunek studiów
-  startDate: string;           // YYYY-MM
+  institution: string; // nazwa uczelni / szkoły
+  degree: string; // np. "Licencjat", "Magister"
+  field: string; // kierunek studiów
+  startDate: string; // YYYY-MM
   endDate: string | 'present';
-  grade?: string;              // ocena / GPA
+  grade?: string; // ocena / GPA
   description?: string;
   visible: boolean;
 }
@@ -364,15 +366,15 @@ interface EducationItem {
 // --- Umiejętności ---
 interface SkillGroupItem {
   id: string;
-  category: string;            // np. "Frontend", "Narzędzia"
-  skills: string[];            // ["React", "TypeScript", ...]
+  category: string; // np. "Frontend", "Narzędzia"
+  skills: string[]; // ["React", "TypeScript", ...]
   visible: boolean;
 }
 
 // --- Języki ---
 interface LanguageItem {
   id: string;
-  name: string;                // np. "Angielski"
+  name: string; // np. "Angielski"
   level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | 'Native';
   visible: boolean;
 }
@@ -381,9 +383,9 @@ interface LanguageItem {
 interface CertificationItem {
   id: string;
   name: string;
-  issuer: string;              // organizacja wystawiająca
-  date: string;                // YYYY-MM
-  expiryDate?: string;         // YYYY-MM
+  issuer: string; // organizacja wystawiająca
+  date: string; // YYYY-MM
+  expiryDate?: string; // YYYY-MM
   credentialUrl?: string;
   visible: boolean;
 }
@@ -393,7 +395,7 @@ interface ProjectItem {
   id: string;
   name: string;
   description: string;
-  startDate?: string;          // YYYY-MM
+  startDate?: string; // YYYY-MM
   endDate?: string | 'present';
   url?: string;
   github?: string;
@@ -405,8 +407,8 @@ interface ProjectItem {
 interface CourseItem {
   id: string;
   name: string;
-  platform: string;            // np. "Udemy", "Coursera", "YouTube"
-  date?: string;               // YYYY-MM ukończenia
+  platform: string; // np. "Udemy", "Coursera", "YouTube"
+  date?: string; // YYYY-MM ukończenia
   url?: string;
   visible: boolean;
 }
@@ -416,7 +418,7 @@ interface VolunteerItem {
   id: string;
   organization: string;
   role: string;
-  startDate: string;           // YYYY-MM
+  startDate: string; // YYYY-MM
   endDate: string | 'present';
   location?: string;
   description?: string;
@@ -426,8 +428,8 @@ interface VolunteerItem {
 // --- Zainteresowania ---
 interface InterestItem {
   id: string;
-  name: string;                // np. "Fotografia", "Open source"
-  description?: string;        // opcjonalne rozwinięcie
+  name: string; // np. "Fotografia", "Open source"
+  description?: string; // opcjonalne rozwinięcie
   visible: boolean;
 }
 ```
@@ -441,18 +443,18 @@ Użytkownik tworzy sekcję o dowolnej nazwie i dodaje wpisy z predefiniowanym ze
 ```typescript
 interface CustomSection {
   id: string;
-  title: string;               // nazwa sekcji nadana przez użytkownika
+  title: string; // nazwa sekcji nadana przez użytkownika
   visible: boolean;
   items: CustomSectionItem[];
 }
 
 interface CustomSectionItem {
   id: string;
-  title?: string;              // nagłówek wpisu
-  subtitle?: string;           // podtytuł / organizacja
-  startDate?: string;          // YYYY-MM
+  title?: string; // nagłówek wpisu
+  subtitle?: string; // podtytuł / organizacja
+  startDate?: string; // YYYY-MM
   endDate?: string | 'present';
-  description?: string;        // opis
+  description?: string; // opis
   visible: boolean;
 }
 ```
@@ -462,10 +464,17 @@ interface CustomSectionItem {
 ### CVLayout — kolejność i widoczność sekcji
 
 ```typescript
-type SectionKey = 'experience' | 'education' | 'skills' | 'languages' | 'certifications' | 'projects' | string; // string dla custom sections
+type SectionKey =
+  | 'experience'
+  | 'education'
+  | 'skills'
+  | 'languages'
+  | 'certifications'
+  | 'projects'
+  | string; // string dla custom sections
 
 interface CVLayout {
-  sectionOrder: SectionKey[];  // kolejność sekcji na CV (drag & drop)
+  sectionOrder: SectionKey[]; // kolejność sekcji na CV (drag & drop)
 }
 ```
 
@@ -525,4 +534,4 @@ const withPWA = require('next-pwa')({
 
 ---
 
-*Ostatnia aktualizacja: 2026-03-24*
+_Ostatnia aktualizacja: 2026-03-24_

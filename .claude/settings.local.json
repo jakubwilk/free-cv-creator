@@ -11,7 +11,10 @@
       "WebFetch(domain:docs.rxresu.me)",
       "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git)",
       "Bash(printf \"N\\\\nN\\\\n\")",
-      "Bash(yes \"\")"
+      "Bash(yes \"\")",
+      "Bash(ls \"e:\\\\react\\\\free-cv-project\\\\node_modules\\\\next\\\\dist\\\\docs\"\" 2>/dev/null || echo \"docs dir not found \")",
+      "Bash(npm install:*)",
+      "Bash(node --input-type=module:*)"
     ]
   }
 }

@@ -4,6 +4,12 @@
 
 ---
 
+## Next.js Version Warning
+
+**This is NOT the Next.js you know.** This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+
+---
+
 ## Language Policy
 
 Respond in the same language the user writes in. Polish and English prompts are treated identically — the same quality of reasoning, the same thoroughness, the same output structure. Never switch languages mid-response unless explicitly asked.
@@ -17,6 +23,7 @@ The detailed product description ready for implementation is located at:
 **[../SPEC.md](../SPEC.md)**
 
 SPEC.md contains:
+
 - Product description and business goal
 - Functional and non-functional requirements
 - System architecture and technology stack
@@ -32,14 +39,14 @@ SPEC.md contains:
 
 ### Agent Directory
 
-| Agent | Emoji | Path | Domain |
-|-------|-------|------|--------|
-| UI Designer | 🎨 | `agents/design/design-ui-designer.md` | Visual design systems |
-| UX Architect | 📐 | `agents/design/design-ux-architect.md` | Technical architecture & UX |
-| UX Researcher | 🔬 | `agents/design/design-ux-researcher.md` | User research |
-| Backend Architect | 🏗️ | `agents/engineering/engineering-backend-architect.md` | Backend systems & databases |
-| Frontend Developer | 🖥️ | `agents/engineering/engineering-frontend-developer.md` | UI implementation & web |
-| Security Engineer | 🔒 | `agents/engineering/engineering-security-engineer.md` | Application security |
+| Agent              | Emoji | Path                                                   | Domain                      |
+| ------------------ | ----- | ------------------------------------------------------ | --------------------------- |
+| UI Designer        | 🎨    | `agents/design/design-ui-designer.md`                  | Visual design systems       |
+| UX Architect       | 📐    | `agents/design/design-ux-architect.md`                 | Technical architecture & UX |
+| UX Researcher      | 🔬    | `agents/design/design-ux-researcher.md`                | User research               |
+| Backend Architect  | 🏗️    | `agents/engineering/engineering-backend-architect.md`  | Backend systems & databases |
+| Frontend Developer | 🖥️    | `agents/engineering/engineering-frontend-developer.md` | UI implementation & web     |
+| Security Engineer  | 🔒    | `agents/engineering/engineering-security-engineer.md`  | Application security        |
 
 ---
 
@@ -48,11 +55,13 @@ SPEC.md contains:
 ---
 
 ### 🎨 UI Designer
+
 **File:** [agents/design/design-ui-designer.md](agents/design/design-ui-designer.md)
 
 **Role:** Expert in visual design systems, component libraries, and interface creation. Produces consistent, accessible UI that reflects brand identity.
 
 **Use when:**
+
 - Designing new screens or views
 - Creating or extending a component library (buttons, cards, forms, navigation)
 - Defining design tokens: colors, typography, spacing, shadows
@@ -66,11 +75,13 @@ SPEC.md contains:
 ---
 
 ### 📐 UX Architect
+
 **File:** [agents/design/design-ux-architect.md](agents/design/design-ux-architect.md)
 
 **Role:** Technical architecture and UX specialist. Creates CSS foundations, layout systems, and translates product specifications into implementable technical structure.
 
 **Use when:**
+
 - Starting a new project and needing a CSS foundation (variables, grid, typography)
 - Defining information architecture and content hierarchy
 - Building a breakpoint system and responsive strategy
@@ -84,11 +95,13 @@ SPEC.md contains:
 ---
 
 ### 🔬 UX Researcher
+
 **File:** [agents/design/design-ux-researcher.md](agents/design/design-ux-researcher.md)
 
 **Role:** Expert in UX research, user behavior analysis, and usability testing. Delivers insights grounded in data, not assumptions.
 
 **Use when:**
+
 - Validating product assumptions before implementation
 - Creating user personas based on empirical data
 - Designing user journey maps and identifying pain points
@@ -102,11 +115,13 @@ SPEC.md contains:
 ---
 
 ### 🏗️ Backend Architect
+
 **File:** [agents/engineering/engineering-backend-architect.md](agents/engineering/engineering-backend-architect.md)
 
 **Role:** Senior backend architect specializing in scalable systems, database architecture, APIs, and cloud infrastructure.
 
 **Use when:**
+
 - Designing a database schema (tables, indexes, relations)
 - Architecting REST APIs or GraphQL
 - Designing microservices or event-driven systems
@@ -121,11 +136,13 @@ SPEC.md contains:
 ---
 
 ### 🖥️ Frontend Developer
+
 **File:** [agents/engineering/engineering-frontend-developer.md](agents/engineering/engineering-frontend-developer.md)
 
 **Role:** Expert in modern web application implementation (React/Vue/Angular), performance optimization, and accessibility.
 
 **Use when:**
+
 - Implementing React/Vue/Angular components from design specifications
 - Integrating the frontend with a backend API
 - Optimizing Core Web Vitals (LCP, FID, CLS)
@@ -140,11 +157,13 @@ SPEC.md contains:
 ---
 
 ### 🔒 Security Engineer
+
 **File:** [agents/engineering/engineering-security-engineer.md](agents/engineering/engineering-security-engineer.md)
 
 **Role:** Application security expert — threat modeling, vulnerability assessment, secure code review, and security architecture.
 
 **Use when:**
+
 - Designing or reviewing authentication and authorization systems
 - Implementing OAuth 2.0, OIDC, RBAC, or ABAC
 - Running a STRIDE threat model before implementation
@@ -162,26 +181,31 @@ SPEC.md contains:
 ## Recommended Agent Sequences
 
 ### New product feature
+
 ```
 UX Researcher → UI Designer → UX Architect → Backend Architect → Frontend Developer → Security Engineer
 ```
 
 ### New screen / view
+
 ```
 UI Designer → UX Architect → Frontend Developer
 ```
 
 ### New API / endpoint
+
 ```
 Backend Architect → Security Engineer → Frontend Developer
 ```
 
 ### Security audit
+
 ```
 Security Engineer (standalone or after Backend Architect)
 ```
 
 ### User research / idea validation
+
 ```
 UX Researcher (standalone)
 ```

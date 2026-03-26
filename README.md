@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Free CV Creator
 
-## Getting Started
+A free, privacy-first CV builder that runs entirely in your browser. No account required, no data stored on any server — your information never leaves your device.
 
-First, run the development server:
+> Create a professional CV, download it as PDF, and save it as JSON to edit later. That's it.
+
+## Why another CV builder?
+
+Most CV builders are either paid, hide PDF export behind a paywall, or require you to create an account. Free CV Creator gives you beautiful, modern templates with full PDF export — completely free, forever.
+
+|                   | Free CV Creator | Canva            | Europass |
+| ----------------- | --------------- | ---------------- | -------- |
+| Free PDF export   | ✅              | Partially        | ✅       |
+| Modern templates  | ✅              | ✅ (partly paid) | ❌       |
+| No account needed | ✅              | ❌               | ✅       |
+| Privacy-first     | ✅              | ❌               | ❌       |
+
+## Features
+
+- **Live preview** — see your CV update in real time as you type
+- **Multiple templates** — choose from a curated set of modern, ATS-friendly designs
+- **PDF export** — download a clean, text-selectable PDF (no image trickery)
+- **JSON export & import** — save your CV as JSON and reload it anytime
+- **Multiple CVs** — create separate CVs for different languages or roles
+- **No account, no tracking** — all data stays in your browser's localStorage
+- **PWA support** — install as an app, works offline after first load
+
+## Tech stack
+
+- [Next.js](https://nextjs.org/) 16 — App Router, SSR for landing page SEO
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/) v4
+- [Zustand](https://zustand-demo.pmnd.rs/) — global state with localStorage middleware
+- [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) — form handling and validation
+- [@react-pdf/renderer](https://react-pdf.org/) — client-side PDF generation
+
+## Getting started
+
+### Prerequisites
+
+- Node.js 18+
+- npm / yarn / pnpm
+
+### Local development
 
 ```bash
+# Clone the repository
+git clone <repo-url>
+cd free-cv-project
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+### Self-hosting (VPS)
 
-To learn more about Next.js, take a look at the following resources:
+The app runs as a standard Node.js process. A minimal setup with Nginx as a reverse proxy and PM2 as a process manager is recommended:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+pm2 start npm --name "free-cv" -- start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Point Nginx to `localhost:3000` and configure SSL with Certbot.
 
-## Deploy on Vercel
+## Privacy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Free CV Creator is built around a simple principle: **your CV data is yours**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- All data is stored exclusively in your browser's `localStorage`
+- Nothing is sent to any server during normal use
+- Downloading a PDF clears the data from localStorage
+- No analytics, no cookies, no tracking
+
+## Contributing
+
+Contributions are welcome. If you'd like to add a new template, fix a bug, or improve the UX, feel free to open an issue or a pull request.
+
+## License
+
+MIT
