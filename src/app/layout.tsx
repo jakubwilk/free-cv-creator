@@ -10,11 +10,20 @@ import './globals.css';
 
 import { ColorSchemeScript, createTheme, mantineHtmlProps, MantineProvider } from '@mantine/core';
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist_Mono, Inter, Plus_Jakarta_Sans } from 'next/font/google';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: '--font-heading',
+  subsets: ['latin', 'latin-ext'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+});
+
+const inter = Inter({
+  variable: '--font-body',
+  subsets: ['latin', 'latin-ext'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
 });
 
 const geistMono = Geist_Mono({
@@ -23,13 +32,13 @@ const geistMono = Geist_Mono({
 });
 
 const theme = createTheme({
-  fontFamily: 'var(--font-geist-sans), system-ui, sans-serif',
+  fontFamily: 'var(--font-body), system-ui, sans-serif',
   fontFamilyMonospace: 'var(--font-geist-mono), monospace',
   primaryColor: 'blue',
   primaryShade: { light: 6, dark: 5 },
   defaultRadius: 'md',
   headings: {
-    fontFamily: 'var(--font-geist-sans), system-ui, sans-serif',
+    fontFamily: 'var(--font-heading), system-ui, sans-serif',
     fontWeight: '800',
     sizes: {
       h1: { fontSize: '3.5rem', lineHeight: '1.1' },
@@ -72,7 +81,7 @@ export default function RootLayout({
   return (
     <html
       lang="pl"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${plusJakartaSans.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
       {...mantineHtmlProps}
     >
       <head>
