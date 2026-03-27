@@ -1,8 +1,10 @@
 'use client';
 
-import { Box, Button, Container, Grid, Stack, Text, Title } from '@mantine/core';
+import { SectionHeader } from '@common/components';
+import { useMotionPreferences } from '@common/hooks';
+import { Box, Button, Container, Grid, Stack, Text } from '@mantine/core';
 import { IconArrowRight } from '@tabler/icons-react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import { TemplateMockupCard } from './TemplateMockupCard';
 
@@ -13,29 +15,17 @@ const templates = [
 ];
 
 export function TemplateShowcaseSection() {
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useMotionPreferences();
 
   return (
     <Box component="section" id="templates" className="py-20 bg-white">
       <Container size="xl">
-        <Stack align="center" gap="sm" mb={56}>
-          <Text fz="xs" fw={700} c="blue.6" className="tracking-widest uppercase">
-            Szablony
-          </Text>
-          <Title
-            order={2}
-            ta="center"
-            c="dark.9"
-            fw={700}
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)' }}
-          >
-            Profesjonalne szablony
-          </Title>
-          <Text c="gray.6" fz="lg" ta="center" maw={520}>
-            Wybierz spośród nowoczesnych szablonów zoptymalizowanych pod systemy ATS. Każdy szablon
-            dostępny w kilku wariantach kolorystycznych.
-          </Text>
-        </Stack>
+        <SectionHeader
+          label="Szablony"
+          title="Profesjonalne szablony"
+          description="Wybierz spośród nowoczesnych szablonów zoptymalizowanych pod systemy ATS. Każdy szablon dostępny w kilku wariantach kolorystycznych."
+          descriptionMaxWidth={520}
+        />
 
         <Grid gutter={{ base: 24, md: 32 }}>
           {templates.map((tpl, i) => (

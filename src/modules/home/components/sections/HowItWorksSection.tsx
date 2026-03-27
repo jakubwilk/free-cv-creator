@@ -1,8 +1,10 @@
 'use client';
 
+import { SectionHeader } from '@common/components';
+import { useMotionPreferences } from '@common/hooks';
 import { Box, Container, Grid, Stack, Text, ThemeIcon, Title } from '@mantine/core';
 import { IconDownload, IconForms, IconLayoutGrid } from '@tabler/icons-react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const steps = [
   {
@@ -26,28 +28,16 @@ const steps = [
 ];
 
 export function HowItWorksSection() {
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useMotionPreferences();
 
   return (
     <Box component="section" id="how-it-works" className="py-20" bg="gray.0">
       <Container size="xl">
-        <Stack align="center" gap="sm" mb={56}>
-          <Text fz="xs" fw={700} c="blue.6" className="tracking-widest uppercase">
-            Jak zacząć
-          </Text>
-          <Title
-            order={2}
-            ta="center"
-            fw={700}
-            c="dark.9"
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)' }}
-          >
-            Jak to działa?
-          </Title>
-          <Text c="gray.6" fz="lg" ta="center" maw={480}>
-            Trzy kroki do gotowego, profesjonalnego CV.
-          </Text>
-        </Stack>
+        <SectionHeader
+          label="Jak zacząć"
+          title="Jak to działa?"
+          description="Trzy kroki do gotowego, profesjonalnego CV."
+        />
 
         <Box className="relative">
           <Grid gutter={{ base: 32, md: 48 }}>

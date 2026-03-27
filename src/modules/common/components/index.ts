@@ -1,1 +1,1 @@
-// barrel file — add exports here
+export { SectionHeader } from './SectionHeader';

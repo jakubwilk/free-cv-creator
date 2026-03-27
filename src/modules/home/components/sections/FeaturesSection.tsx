@@ -1,8 +1,10 @@
 'use client';
 
-import { Box, Container, Grid, Stack, Text, ThemeIcon, Title } from '@mantine/core';
+import { SectionHeader } from '@common/components';
+import { useMotionPreferences } from '@common/hooks';
+import { Box, Container, Grid, Stack, Text, ThemeIcon } from '@mantine/core';
 import { IconEye, IconFileExport, IconGift, IconShield, IconWifiOff } from '@tabler/icons-react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import styles from './FeaturesSection.module.css';
 
@@ -37,28 +39,19 @@ const features = [
 ];
 
 export function FeaturesSection() {
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useMotionPreferences();
 
   return (
     <Box component="section" id="features" className="py-20" bg="dark.9">
       <Container size="xl">
-        <Stack align="center" gap="sm" mb={56}>
-          <Text fz="xs" fw={700} c="blue.4" className="tracking-widest uppercase">
-            Możliwości
-          </Text>
-          <Title
-            order={2}
-            ta="center"
-            c="white"
-            fw={700}
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)' }}
-          >
-            Wszystko czego potrzebujesz
-          </Title>
-          <Text c="gray.5" fz="lg" ta="center" maw={480}>
-            Zero subskrypcji, zero konta — pełna funkcjonalność dostępna od razu.
-          </Text>
-        </Stack>
+        <SectionHeader
+          label="Możliwości"
+          title="Wszystko czego potrzebujesz"
+          description="Zero subskrypcji, zero konta — pełna funkcjonalność dostępna od razu."
+          labelColor="blue.4"
+          titleColor="white"
+          descriptionColor="gray.5"
+        />
 
         <Grid gutter={{ base: 16, md: 24 }}>
           {features.map((feature, index) => (

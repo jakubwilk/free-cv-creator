@@ -1,28 +1,13 @@
 'use client';
 
+import { useMotionPreferences } from '@common/hooks';
+import { PRIVACY_POINTS } from '@home/models';
 import { Box, Container, Grid, Group, Stack, Text, ThemeIcon, Title } from '@mantine/core';
 import { IconCheck, IconLock, IconServer, IconShieldLock, IconX } from '@tabler/icons-react';
-import { motion, useReducedMotion } from 'framer-motion';
-
-const privacyPoints = [
-  {
-    title: 'Brak serwera, brak bazy danych',
-    description:
-      'Aplikacja nie posiada backendu. Dane zapisywane są wyłącznie w localStorage Twojej przeglądarki.',
-  },
-  {
-    title: 'Zero konta, zero e-maila',
-    description: 'Nie pytamy Cię o żadne dane kontaktowe. Zaczynasz tworzyć CV od razu.',
-  },
-  {
-    title: 'Dane znikają po pobraniu PDF',
-    description:
-      'Po wygenerowaniu pliku PDF localStorage jest automatycznie czyszczony — lub możesz zapisać dane jako JSON.',
-  },
-];
+import { motion } from 'framer-motion';
 
 export function PrivacySection() {
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useMotionPreferences();
 
   return (
     <Box
@@ -63,7 +48,7 @@ export function PrivacySection() {
                   ma ciasteczek śledzących.
                 </Text>
                 <Stack gap="lg">
-                  {privacyPoints.map((point, i) => (
+                  {PRIVACY_POINTS.map((point, i) => (
                     <Group key={i} gap="md" align="flex-start" wrap="nowrap">
                       <ThemeIcon
                         size={36}

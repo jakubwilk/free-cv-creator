@@ -1,1 +1,1 @@
-// barrel file — add exports here
+export { useMotionPreferences } from './useMotionPreferences';

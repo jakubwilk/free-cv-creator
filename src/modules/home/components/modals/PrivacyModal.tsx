@@ -1,39 +1,33 @@
 'use client';
+import { PRIVACY_POINTS } from '@home/models';
 import { Group, Modal, Stack, Text, ThemeIcon } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
+import type { ReactNode } from 'react';
 
 interface PrivacyModalProps {
   opened: boolean;
   onClose: () => void;
+  icon?: ReactNode;
 }
 
-const privacyPoints = [
-  {
-    title: 'Brak serwera, brak bazy danych',
-    description:
-      'Aplikacja nie posiada backendu. Dane zapisywane są wyłącznie w localStorage Twojej przeglądarki.',
-  },
-  {
-    title: 'Zero konta, zero e-maila',
-    description: 'Nie pytamy Cię o żadne dane kontaktowe. Zaczynasz tworzyć CV od razu.',
-  },
-  {
-    title: 'Dane znikają po pobraniu PDF',
-    description:
-      'Po wygenerowaniu pliku PDF localStorage jest automatycznie czyszczony — lub możesz zapisać dane jako JSON.',
-  },
-];
-
-export function PrivacyModal({ opened, onClose }: PrivacyModalProps) {
+export function PrivacyModal({ opened, onClose, icon }: PrivacyModalProps) {
   return (
     <Modal
       opened={opened}
       onClose={onClose}
       title={
-        <Text fw={700} fz="lg" c="dark.9">
-          Twoje dane są bezpieczne
-        </Text>
+        <Group gap="sm" align="center">
+          {icon && (
+            <ThemeIcon variant="transparent" color="blue" size="xl">
+              {icon}
+            </ThemeIcon>
+          )}
+          <Text fw={700} fz="lg" c="dark.9">
+            Twoje dane są bezpieczne
+          </Text>
+        </Group>
       }
+      padding="1.5rem"
       size="lg"
       radius="md"
       centered
@@ -45,7 +39,7 @@ export function PrivacyModal({ opened, onClose }: PrivacyModalProps) {
           śledzących.
         </Text>
         <Stack gap="lg">
-          {privacyPoints.map((point, i) => (
+          {PRIVACY_POINTS.map((point, i) => (
             <Group key={i} gap="md" align="flex-start" wrap="nowrap">
               <ThemeIcon
                 size={36}

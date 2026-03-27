@@ -1,5 +1,6 @@
 'use client';
 import { useDisclosure } from '@mantine/hooks';
+import { IconHelpCircle, IconShieldLock } from '@tabler/icons-react';
 
 import {
   FaqModal,
@@ -17,8 +18,8 @@ export function LandingPage() {
 
   return (
     <>
-      <PrivacyModal opened={privacyOpened} onClose={closePrivacy} />
-      <FaqModal opened={faqOpened} onClose={closeFaq} />
+      <PrivacyModal opened={privacyOpened} onClose={closePrivacy} icon={<IconShieldLock size={22} />} />
+      <FaqModal opened={faqOpened} onClose={closeFaq} icon={<IconHelpCircle size={22} />} />
       <LandingNavbar onPrivacyOpen={openPrivacy} onFaqOpen={openFaq} />
       <main id="main-content">
         <HeroSection />

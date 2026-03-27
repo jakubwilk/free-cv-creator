@@ -1,11 +1,12 @@
 'use client';
 
+import { useMotionPreferences } from '@common/hooks';
 import { Box, Button, Container, Stack, Text, Title } from '@mantine/core';
 import { IconArrowRight } from '@tabler/icons-react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export function FinalCtaSection() {
-  const shouldReduceMotion = useReducedMotion();
+  const { shouldReduceMotion } = useMotionPreferences();
 
   return (
     <Box component="section" className="py-20" bg="dark.9">

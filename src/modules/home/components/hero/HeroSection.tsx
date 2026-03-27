@@ -1,8 +1,9 @@
 'use client';
 
+import { useMotionPreferences } from '@common/hooks';
 import { Badge, Box, Button, Container, Grid, Group, Stack, Text, Title } from '@mantine/core';
 import { IconArrowRight, IconDownload, IconUserOff, IconWifi } from '@tabler/icons-react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import { HeroMockup } from './HeroMockup';
 
@@ -21,8 +22,7 @@ const fadeRight = {
 };
 
 export function HeroSection() {
-  const shouldReduceMotion = useReducedMotion();
-  const initial = shouldReduceMotion ? 'visible' : 'hidden';
+  const { initial } = useMotionPreferences();
 
   return (
     <Box
