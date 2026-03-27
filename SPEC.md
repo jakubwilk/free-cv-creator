@@ -15,7 +15,8 @@
 7. [Stos technologiczny](#7-stos-technologiczny)
 8. [Struktura danych](#8-struktura-danych)
 9. [Persystencja danych](#9-persystencja-danych)
-10. [PWA](#10-pwa)
+10. [Struktura projektu](#10-struktura-projektu)
+11. [PWA](#11-pwa)
 
 ---
 
@@ -514,7 +515,80 @@ Użycie biblioteki `zod` do walidacji struktury wczytanego JSON — odporność 
 
 ---
 
-## 10. PWA
+## 10. Struktura projektu
+
+### Katalog główny `src/`
+
+```
+src/
+├── config/          # Pliki konfiguracyjne współdzielone (theme.ts, axios.ts, constants.ts itp.)
+├── app/             # Next.js App Router — routing, layout, api routes
+└── modules/         # Podział aplikacji na zamknięte moduły funkcjonalne
+    ├── common/      # Wyjątkowy moduł współdzielony — używany przez wszystkie inne moduły
+    ├── home/        # Moduł strony głównej (landing page)
+    ├── dashboard/   # Moduł dashboardu (lista CV)
+    └── editor/      # Moduł edytora CV
+```
+
+### Struktura modułu
+
+Każdy moduł (home, dashboard, editor itp.) posiada identyczną strukturę wewnętrzną:
+
+```
+modules/<name>/
+├── api/             # Hooki React Query (useGetX, usePostX itp.)
+├── components/      # Komponenty UI specyficzne dla modułu
+├── pages/           # Komponenty główne widoku (montowane przez app/)
+├── models/          # Typy i modele danych (np. cv.model.ts, features.model.ts)
+├── utils/           # Funkcje pomocnicze, transformacje danych
+├── context/         # Zustand store dla modułu
+├── hooks/           # Hooki React specyficzne dla modułu
+└── index.ts         # Barrel file — eksportuje publiczne API modułu
+```
+
+Każdy podfolder modułu posiada własny `index.ts` (barrel file) ułatwiający importy.
+
+### Zasady izolacji modułów
+
+- **Moduły są hermetyczne** — moduł `home` nie importuje nic z modułów `dashboard`, `editor` ani innych modułów funkcjonalnych.
+- **Jedynym wyjątkiem jest `common`** — z tego modułu można korzystać we wszystkich pozostałych.
+- **`config/`** jest dostępny globalnie — przechowuje konfigurację techniczną niezwiązaną z logiką biznesową.
+
+### Aliasy TypeScript (`tsconfig.json`)
+
+| Alias | Ścieżka |
+|---|---|
+| `@/*` | `src/*` |
+| `@config/*` | `src/config/*` |
+| `@common/*` | `src/modules/common/*` |
+| `@home/*` | `src/modules/home/*` |
+| `@dashboard/*` | `src/modules/dashboard/*` |
+| `@editor/*` | `src/modules/editor/*` |
+
+### Barrel files
+
+Każdy folder modułu eksportuje swoje publiczne API przez `index.ts`, np.:
+
+```typescript
+// src/modules/home/components/index.ts
+export { LandingNavbar } from './LandingNavbar';
+export { HeroSection }   from './HeroSection';
+// ...
+```
+
+Importy między modułami (tylko przez `common`) zawsze wskazują na barrel file, nie na konkretny plik wewnętrzny:
+
+```typescript
+// ✅ poprawnie
+import { Button } from '@common/components';
+
+// ❌ niepoprawnie — import z innego modułu
+import { SomeComponent } from '@dashboard/components';
+```
+
+---
+
+## 11. PWA
 
 ### Wymagania
 

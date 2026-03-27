@@ -15,7 +15,12 @@
       "Bash(ls \"e:\\\\react\\\\free-cv-project\\\\node_modules\\\\next\\\\dist\\\\docs\"\" 2>/dev/null || echo \"docs dir not found \")",
       "Bash(npm install:*)",
       "Bash(node --input-type=module:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(npx eslint:*)",
+      "Bash(sed -i 's/#funkcje/#how-it-works/g; s/#szablony/#templates/g; s/#prywatnosc/#privacy/g' src/modules/home/components/navbar/LandingNavbar.tsx src/modules/home/components/footer/LandingFooter.tsx)",
+      "Bash(sed -i 's/id=\"\"funkcje\"\"/id=\"\"how-it-works\"\"/g' src/modules/home/components/sections/HowItWorksSection.tsx)",
+      "Bash(sed -i 's/id=\"\"szablony\"\"/id=\"\"templates\"\"/g' src/modules/home/components/sections/TemplateShowcaseSection.tsx)",
+      "Bash(sed -i 's/id=\"\"prywatnosc\"\"/id=\"\"privacy\"\"/g' src/modules/home/components/sections/PrivacySection.tsx)"
     ]
   }
 }
