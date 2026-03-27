@@ -1,0 +1,146 @@
+{
+  "metadata": {
+    "title": "Free CV Creator — Free Online CV Builder",
+    "description": "Create a professional CV for free. No registration, no account needed. Your data stays in the browser. Download PDF instantly.",
+    "keywords": "cv builder, cv online, free cv, create cv, cv pdf, cv builder no registration, resume builder",
+    "ogTitle": "Free CV Creator — Free Online CV Builder",
+    "ogDescription": "Create a professional CV for free. No registration, no account needed. Download PDF instantly.",
+    "ogLocale": "en_US"
+  },
+  "navbar": {
+    "howItWorks": "How it works",
+    "features": "Features",
+    "privacy": "Privacy",
+    "faq": "FAQ",
+    "createCv": "Create CV",
+    "openMenu": "Open menu",
+    "createCvFree": "Create CV for free"
+  },
+  "hero": {
+    "badge": "100% free · No account · Your data stays with you",
+    "titlePart1": "Create a professional CV",
+    "titleHighlight": "completely for free",
+    "titlePart2": "— no account, no strings attached.",
+    "description": "Fill in the form, choose a template, and download your CV as a PDF. None of your data goes to a server — everything runs in your browser.",
+    "ctaButton": "Create CV for free",
+    "noRegistration": "No registration",
+    "downloadPdf": "Download PDF",
+    "worksOffline": "Works offline"
+  },
+  "howItWorks": {
+    "sectionLabel": "Get started",
+    "sectionTitle": "How does it work?",
+    "sectionDescription": "Three steps to a finished, professional CV.",
+    "steps": {
+      "chooseTemplate": {
+        "title": "Choose a template",
+        "description": "Browse the gallery of professional templates and pick the one that suits your industry."
+      },
+      "fillForm": {
+        "title": "Fill in the form",
+        "description": "Complete the CV sections — personal details, experience, education, and skills. The preview updates in real time."
+      },
+      "downloadPdf": {
+        "title": "Download PDF",
+        "description": "Done! Download your CV as a print-quality PDF — selectable text, ATS-friendly."
+      }
+    }
+  },
+  "features": {
+    "sectionLabel": "Capabilities",
+    "sectionTitle": "Everything you need",
+    "sectionDescription": "Zero subscriptions, zero accounts — full functionality available right away.",
+    "items": {
+      "free": {
+        "title": "Completely free",
+        "description": "Zero hidden fees, zero paywalls. Download PDF on your very first use."
+      },
+      "secure": {
+        "title": "Your data is safe",
+        "description": "CV data never leaves your browser. No server, no tracking."
+      },
+      "livePreview": {
+        "title": "Live Preview",
+        "description": "The template preview updates in real time as you fill in the form."
+      },
+      "export": {
+        "title": "PDF & JSON Export",
+        "description": "Download your finished CV as a PDF or save the data to a JSON file — for later use."
+      },
+      "offline": {
+        "title": "Works offline",
+        "description": "Install as a PWA app and work on your CV without internet access."
+      }
+    }
+  },
+  "privacy": {
+    "sectionLabel": "Privacy",
+    "sectionTitle": "Your data never leaves your browser.",
+    "sectionDescription": "Free CV Creator works 100% locally — no server sees your name, email address, or employment history. No login, no database, no tracking cookies.",
+    "browserOnlyLabel": "Data only in your browser",
+    "noServer": "Server does not exist",
+    "points": {
+      "noBackend": {
+        "title": "No server, no database",
+        "description": "The app has no backend. Data is stored exclusively in your browser's localStorage."
+      },
+      "noAccount": {
+        "title": "Zero accounts, zero email",
+        "description": "We don't ask for any contact details. You start creating your CV right away."
+      },
+      "dataGone": {
+        "title": "Data gone after PDF download",
+        "description": "After generating the PDF, localStorage is automatically cleared — or you can save your data as JSON."
+      }
+    },
+    "modalTitle": "Your data is safe"
+  },
+  "faq": {
+    "sectionLabel": "Questions",
+    "sectionTitle": "Frequently asked questions",
+    "modalTitle": "Frequently asked questions",
+    "items": {
+      "free": {
+        "question": "Is the app really completely free?",
+        "answer": "Yes. Free CV Creator is 100% free — there are no premium plans, hidden fees, or paywalls. You can download a PDF on your very first use, with no conditions."
+      },
+      "privacy": {
+        "question": "What happens to my personal data?",
+        "answer": "Your data never leaves your browser. The app has no server or database. All information is stored exclusively in your browser's localStorage and is deleted after you download the PDF or upon your request."
+      },
+      "pdf": {
+        "question": "What is the quality of the generated PDF?",
+        "answer": "The PDF is generated by the @react-pdf/renderer library directly in the browser. Text is fully selectable and copyable, and the layout preserves exactly what you see in the preview. The CV is optimized for ATS (Applicant Tracking Systems)."
+      },
+      "templates": {
+        "question": "How many templates are available and will there be more?",
+        "answer": "Several professional templates are available at launch. Each template can be customized by choosing an accent color. New templates will be added regularly."
+      },
+      "offline": {
+        "question": "Does the app work without internet?",
+        "answer": "Yes! After the first load, the app can be installed on your device as a PWA (Progressive Web App) and used without internet access. The Service Worker caches all app resources."
+      },
+      "import": {
+        "question": "Can I load my previous CV?",
+        "answer": "Yes. You can export your CV data to a JSON file and reload it in the future on any device. The JSON file contains all form data and can be imported via the \"Load CV\" option in the editor."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "A free CV builder running entirely in your browser. No account, no tracking, no paywalls.",
+    "navigationLabel": "Navigation",
+    "howItWorks": "How it works",
+    "features": "Features",
+    "privacyLink": "Privacy",
+    "faqLink": "FAQ",
+    "appLabel": "App",
+    "createCv": "Create CV",
+    "myCv": "My CVs",
+    "copyright": "© 2026 Free CV Creator. All rights reserved.",
+    "dataStays": "Your data never leaves the browser."
+  },
+  "languageSwitcher": {
+    "ariaLabel": "Change language",
+    "menuLabel": "Język / Language"
+  }
+}
