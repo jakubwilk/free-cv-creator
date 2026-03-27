@@ -43,12 +43,7 @@ export function LandingFooter() {
               <Text fw={700} fz="sm" c="gray.4" className="tracking-[0.06em] uppercase">
                 {t('navigationLabel')}
               </Text>
-              <Anchor
-                href="#how-it-works"
-                c="gray.6"
-                fz="sm"
-                className="nav-link leading-loose"
-              >
+              <Anchor href="#how-it-works" c="gray.6" fz="sm" className="nav-link leading-loose">
                 {t('howItWorks')}
               </Anchor>
               <Anchor href="#features" c="gray.6" fz="sm" className="nav-link leading-loose">
