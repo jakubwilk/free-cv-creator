@@ -102,6 +102,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
+      data-scroll-behavior="smooth"
       className={`${plusJakartaSans.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
       {...mantineHtmlProps}
     >
