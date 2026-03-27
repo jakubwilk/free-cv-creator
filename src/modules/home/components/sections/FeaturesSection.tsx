@@ -2,7 +2,7 @@
 
 import { SectionHeader } from '@common/components';
 import { useMotionPreferences } from '@common/hooks';
-import { Box, Container, Grid, Stack, Text, ThemeIcon } from '@mantine/core';
+import { Box, Container, Stack, Text, ThemeIcon } from '@mantine/core';
 import { IconEye, IconFileExport, IconGift, IconShield, IconWifiOff } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 
@@ -53,15 +53,16 @@ export function FeaturesSection() {
           descriptionColor="gray.5"
         />
 
-        <Grid gutter={{ base: 16, md: 24 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {features.map((feature, index) => (
-            <Grid.Col key={index} span={{ base: 12, xs: 6, md: 4 }}>
+            <div key={index} className="flex">
               <motion.div
                 initial={shouldReduceMotion ? {} : { opacity: 0, y: 24 }}
                 whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.4, ease: 'easeOut', delay: index * 0.07 }}
                 className="h-full"
+                style={{ height: '100%' }}
               >
                 <Box
                   className={`${styles.card} h-full rounded-xl p-6`}
@@ -89,9 +90,9 @@ export function FeaturesSection() {
                   </Stack>
                 </Box>
               </motion.div>
-            </Grid.Col>
+            </div>
           ))}
-        </Grid>
+        </div>
       </Container>
     </Box>
   );

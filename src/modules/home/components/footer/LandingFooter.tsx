@@ -1,6 +1,6 @@
 'use client';
 
-import { Anchor, Box, Container, Divider, Grid, Group, Stack, Text } from '@mantine/core';
+import { Anchor, Box, Container, Divider, Group, Stack, Text } from '@mantine/core';
 import { IconFileText } from '@tabler/icons-react';
 
 export function LandingFooter() {
@@ -12,8 +12,8 @@ export function LandingFooter() {
       style={{ borderTop: '1px solid var(--mantine-color-dark-6)' }}
     >
       <Container size="xl">
-        <Grid gutter={{ base: 32, md: 48 }} mb={40}>
-          <Grid.Col span={{ base: 12, md: 5 }}>
+        <div className="grid grid-cols-12 gap-8 mb-10">
+          <div className="col-span-12 md:col-span-5">
             <Stack gap="md">
               <Group gap={6} align="center">
                 <Box className="w-7 h-7 rounded-[6px] flex items-center justify-center" bg="blue.6">
@@ -32,9 +32,9 @@ export function LandingFooter() {
                 śledzenia, bez paywall&apos;i.
               </Text>
             </Stack>
-          </Grid.Col>
+          </div>
 
-          <Grid.Col span={{ base: 6, md: 3 }}>
+          <div className="col-span-6 md:col-span-3">
             <Stack gap="sm">
               <Text fw={700} fz="sm" c="gray.4" className="tracking-[0.06em] uppercase">
                 Nawigacja
@@ -56,9 +56,9 @@ export function LandingFooter() {
                 </Anchor>
               ))}
             </Stack>
-          </Grid.Col>
+          </div>
 
-          <Grid.Col span={{ base: 6, md: 4 }}>
+          <div className="col-span-6 md:col-span-4">
             <Stack gap="sm">
               <Text fw={700} fz="sm" c="gray.4" className="tracking-[0.06em] uppercase">
                 Aplikacja
@@ -70,8 +70,8 @@ export function LandingFooter() {
                 Moje CV
               </Anchor>
             </Stack>
-          </Grid.Col>
-        </Grid>
+          </div>
+        </div>
 
         <Divider color="dark.6" />
         <Group justify="space-between" mt={24} wrap="wrap" gap="sm">

@@ -1,7 +1,7 @@
 'use client';
 
 import { useMotionPreferences } from '@common/hooks';
-import { Badge, Box, Button, Container, Grid, Group, Stack, Text, Title } from '@mantine/core';
+import { Badge, Box, Button, Container, Group, Stack, Text, Title } from '@mantine/core';
 import { IconArrowRight, IconDownload, IconUserOff, IconWifi } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 
@@ -12,11 +12,11 @@ const fadeUp = (delay = 0) => ({
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' as const, delay } },
 });
 
-const fadeRight = {
-  hidden: { opacity: 0, x: 32 },
+const fadeIn = {
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
-    x: 0,
+    y: 0,
     transition: { duration: 0.6, ease: 'easeOut' as const, delay: 0.2 },
   },
 };
@@ -31,9 +31,9 @@ export function HeroSection() {
       style={{ minHeight: 'calc(100vh - 64px)' }}
     >
       <Container size="xl" className="w-full">
-        <Grid gutter={{ base: 48, md: 64 }} align="center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
           {/* Left column */}
-          <Grid.Col span={{ base: 12, md: 7 }}>
+          <div className="md:col-span-7">
             <Stack gap="xl">
               <motion.div variants={fadeUp(0)} initial={initial} animate="visible">
                 <Badge
@@ -112,15 +112,15 @@ export function HeroSection() {
                 </Group>
               </motion.div>
             </Stack>
-          </Grid.Col>
+          </div>
 
           {/* Right column — mockup (hidden on mobile) */}
-          <Grid.Col span={{ base: 12, md: 5 }} visibleFrom="md">
-            <motion.div variants={fadeRight} initial={initial} animate="visible">
+          <div className="hidden md:block md:col-span-5">
+            <motion.div variants={fadeIn} initial={initial} animate="visible">
               <HeroMockup />
             </motion.div>
-          </Grid.Col>
-        </Grid>
+          </div>
+        </div>
       </Container>
     </Box>
   );

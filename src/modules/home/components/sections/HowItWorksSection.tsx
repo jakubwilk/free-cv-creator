@@ -2,7 +2,7 @@
 
 import { SectionHeader } from '@common/components';
 import { useMotionPreferences } from '@common/hooks';
-import { Box, Container, Grid, Stack, Text, ThemeIcon, Title } from '@mantine/core';
+import { Box, Container, Stack, Text, ThemeIcon, Title } from '@mantine/core';
 import { IconDownload, IconForms, IconLayoutGrid } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 
@@ -40,9 +40,9 @@ export function HowItWorksSection() {
         />
 
         <Box className="relative">
-          <Grid gutter={{ base: 32, md: 48 }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {steps.map((step, index) => (
-              <Grid.Col key={index} span={{ base: 12, md: 4 }}>
+              <div key={index}>
                 <motion.div
                   initial={shouldReduceMotion ? {} : { opacity: 0, y: 32 }}
                   whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
@@ -69,9 +69,9 @@ export function HowItWorksSection() {
                     </Text>
                   </Stack>
                 </motion.div>
-              </Grid.Col>
+              </div>
             ))}
-          </Grid>
+          </div>
         </Box>
       </Container>
     </Box>
