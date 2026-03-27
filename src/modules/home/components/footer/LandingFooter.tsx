@@ -47,18 +47,12 @@ export function LandingFooter() {
                 href="#how-it-works"
                 c="gray.6"
                 fz="sm"
-                className="no-underline leading-loose"
+                className="nav-link leading-loose"
               >
                 {t('howItWorks')}
               </Anchor>
-              <Anchor href="#features" c="gray.6" fz="sm" className="no-underline leading-loose">
+              <Anchor href="#features" c="gray.6" fz="sm" className="nav-link leading-loose">
                 {t('features')}
-              </Anchor>
-              <Anchor href="#privacy" c="gray.6" fz="sm" className="no-underline leading-loose">
-                {t('privacyLink')}
-              </Anchor>
-              <Anchor href="#faq" c="gray.6" fz="sm" className="no-underline leading-loose">
-                {t('faqLink')}
               </Anchor>
             </Stack>
           </div>
@@ -73,7 +67,7 @@ export function LandingFooter() {
                 href="/app/new"
                 c="gray.6"
                 fz="sm"
-                className="no-underline leading-loose"
+                className="nav-link leading-loose"
               >
                 {t('createCv')}
               </Anchor>
@@ -82,7 +76,7 @@ export function LandingFooter() {
                 href="/app"
                 c="gray.6"
                 fz="sm"
-                className="no-underline leading-loose"
+                className="nav-link leading-loose"
               >
                 {t('myCv')}
               </Anchor>

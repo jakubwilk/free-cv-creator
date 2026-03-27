@@ -8,7 +8,7 @@ import '@mantine/spotlight/styles.css';
 import '@mantine/tiptap/styles.css';
 import '../globals.css';
 
-import { ColorSchemeScript, createTheme, mantineHtmlProps, MantineProvider } from '@mantine/core';
+import { createTheme, mantineHtmlProps, MantineProvider } from '@mantine/core';
 import type { Metadata } from 'next';
 import { Geist_Mono, Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
@@ -106,9 +106,7 @@ export default async function LocaleLayout({
       className={`${plusJakartaSans.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
       {...mantineHtmlProps}
     >
-      <head>
-        <ColorSchemeScript />
-      </head>
+
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider messages={messages}>
           <MantineProvider theme={theme}>{children}</MantineProvider>

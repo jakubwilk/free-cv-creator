@@ -61,16 +61,16 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
 
           {/* Desktop nav links */}
           <Group gap="xl" visibleFrom="md">
-            <Anchor href="#how-it-works" c="gray.7" fz="sm" fw={500} className="no-underline">
+            <Anchor href="#how-it-works" c="gray.7" fz="sm" fw={500} className="nav-link">
               {t('howItWorks')}
             </Anchor>
-            <Anchor href="#features" c="gray.7" fz="sm" fw={500} className="no-underline">
+            <Anchor href="#features" c="gray.7" fz="sm" fw={500} className="nav-link">
               {t('features')}
             </Anchor>
-            <UnstyledButton onClick={onPrivacyOpen} c="gray.7" fz="sm" fw={500}>
+            <UnstyledButton onClick={onPrivacyOpen} c="gray.7" fz="sm" fw={500} className="nav-link">
               {t('privacy')}
             </UnstyledButton>
-            <UnstyledButton onClick={onFaqOpen} c="gray.7" fz="sm" fw={500}>
+            <UnstyledButton onClick={onFaqOpen} c="gray.7" fz="sm" fw={500} className="nav-link">
               {t('faq')}
             </UnstyledButton>
           </Group>
@@ -134,7 +134,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
             c="dark.9"
             fz="lg"
             fw={500}
-            className="no-underline"
+            className="nav-link"
           >
             {t('howItWorks')}
           </Anchor>
@@ -144,7 +144,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
             c="dark.9"
             fz="lg"
             fw={500}
-            className="no-underline"
+            className="nav-link"
           >
             {t('features')}
           </Anchor>
@@ -156,6 +156,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
             c="dark.9"
             fz="lg"
             fw={500}
+            className="nav-link"
           >
             {t('privacy')}
           </UnstyledButton>
@@ -167,6 +168,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
             c="dark.9"
             fz="lg"
             fw={500}
+            className="nav-link"
           >
             {t('faq')}
           </UnstyledButton>

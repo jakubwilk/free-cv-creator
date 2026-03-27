@@ -29,6 +29,15 @@ html {
   scroll-behavior: smooth;
 }
 
+.nav-link {
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.nav-link:hover {
+  color: var(--mantine-color-blue-6) !important;
+  text-decoration: none;
+}
+
 @keyframes float {
   0%,
   100% {
