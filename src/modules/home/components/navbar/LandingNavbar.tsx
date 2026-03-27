@@ -44,7 +44,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
       <Container size="xl">
         <Group justify="space-between" align="center" className="h-16">
           {/* Logo */}
-          <Anchor component={Link} href="/" className="no-underline">
+          <Anchor component={Link} href="/" underline="never">
             <Group gap={6} align="center">
               <Box className="w-7 h-7 rounded-[6px] flex items-center justify-center" bg="blue.6">
                 <IconFileText size={16} color="white" stroke={2} />
