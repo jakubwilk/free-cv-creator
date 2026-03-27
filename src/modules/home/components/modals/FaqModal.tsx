@@ -1,6 +1,7 @@
 'use client';
-import { FAQ_ITEMS } from '@home/models';
+
 import { Accordion, Group, Modal, Text, ThemeIcon } from '@mantine/core';
+import { useTranslations } from 'next-intl';
 import type { ReactNode } from 'react';
 
 interface FaqModalProps {
@@ -9,7 +10,11 @@ interface FaqModalProps {
   icon?: ReactNode;
 }
 
+const FAQ_KEYS = ['free', 'privacy', 'pdf', 'templates', 'offline', 'import'] as const;
+
 export function FaqModal({ opened, onClose, icon }: FaqModalProps) {
+  const t = useTranslations('faq');
+
   return (
     <Modal
       opened={opened}
@@ -22,7 +27,7 @@ export function FaqModal({ opened, onClose, icon }: FaqModalProps) {
             </ThemeIcon>
           )}
           <Text fw={700} fz="lg" c="dark.9">
-            Najczęściej zadawane pytania
+            {t('modalTitle')}
           </Text>
         </Group>
       }
@@ -41,10 +46,10 @@ export function FaqModal({ opened, onClose, icon }: FaqModalProps) {
           chevron: 'text-[var(--mantine-color-blue-6)]',
         }}
       >
-        {FAQ_ITEMS.map((item) => (
-          <Accordion.Item key={item.value} value={item.value}>
-            <Accordion.Control>{item.question}</Accordion.Control>
-            <Accordion.Panel>{item.answer}</Accordion.Panel>
+        {FAQ_KEYS.map((key) => (
+          <Accordion.Item key={key} value={key}>
+            <Accordion.Control>{t(`items.${key}.question`)}</Accordion.Control>
+            <Accordion.Panel>{t(`items.${key}.answer`)}</Accordion.Panel>
           </Accordion.Item>
         ))}
       </Accordion>

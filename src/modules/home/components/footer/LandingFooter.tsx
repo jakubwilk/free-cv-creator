@@ -2,8 +2,13 @@
 
 import { Anchor, Box, Container, Divider, Group, Stack, Text } from '@mantine/core';
 import { IconFileText } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
+
+import { Link } from '@/i18n/navigation';
 
 export function LandingFooter() {
+  const t = useTranslations('footer');
+
   return (
     <Box
       component="footer"
@@ -28,8 +33,7 @@ export function LandingFooter() {
                 </Text>
               </Group>
               <Text c="gray.6" fz="sm" lh={1.7} maw={320}>
-                Bezpłatny kreator CV działający w całości w Twojej przeglądarce. Bez konta, bez
-                śledzenia, bez paywall&apos;i.
+                {t('tagline')}
               </Text>
             </Stack>
           </div>
@@ -37,37 +41,50 @@ export function LandingFooter() {
           <div className="col-span-6 md:col-span-3">
             <Stack gap="sm">
               <Text fw={700} fz="sm" c="gray.4" className="tracking-[0.06em] uppercase">
-                Nawigacja
+                {t('navigationLabel')}
               </Text>
-              {[
-                ['#how-it-works', 'Jak to działa'],
-                ['#features', 'Funkcje'],
-                ['#privacy', 'Prywatność'],
-                ['#faq', 'FAQ'],
-              ].map(([href, label]) => (
-                <Anchor
-                  key={href}
-                  href={href}
-                  c="gray.6"
-                  fz="sm"
-                  className="no-underline leading-loose"
-                >
-                  {label}
-                </Anchor>
-              ))}
+              <Anchor
+                href="#how-it-works"
+                c="gray.6"
+                fz="sm"
+                className="no-underline leading-loose"
+              >
+                {t('howItWorks')}
+              </Anchor>
+              <Anchor href="#features" c="gray.6" fz="sm" className="no-underline leading-loose">
+                {t('features')}
+              </Anchor>
+              <Anchor href="#privacy" c="gray.6" fz="sm" className="no-underline leading-loose">
+                {t('privacyLink')}
+              </Anchor>
+              <Anchor href="#faq" c="gray.6" fz="sm" className="no-underline leading-loose">
+                {t('faqLink')}
+              </Anchor>
             </Stack>
           </div>
 
           <div className="col-span-6 md:col-span-4">
             <Stack gap="sm">
               <Text fw={700} fz="sm" c="gray.4" className="tracking-[0.06em] uppercase">
-                Aplikacja
+                {t('appLabel')}
               </Text>
-              <Anchor href="/app/new" c="gray.6" fz="sm" className="no-underline leading-loose">
-                Stwórz CV
+              <Anchor
+                component={Link}
+                href="/app/new"
+                c="gray.6"
+                fz="sm"
+                className="no-underline leading-loose"
+              >
+                {t('createCv')}
               </Anchor>
-              <Anchor href="/app" c="gray.6" fz="sm" className="no-underline leading-loose">
-                Moje CV
+              <Anchor
+                component={Link}
+                href="/app"
+                c="gray.6"
+                fz="sm"
+                className="no-underline leading-loose"
+              >
+                {t('myCv')}
               </Anchor>
             </Stack>
           </div>
@@ -76,10 +93,10 @@ export function LandingFooter() {
         <Divider color="dark.6" />
         <Group justify="space-between" mt={24} wrap="wrap" gap="sm">
           <Text fz="xs" c="gray.6">
-            © 2026 Free CV Creator. Wszelkie prawa zastrzeżone.
+            {t('copyright')}
           </Text>
           <Text fz="xs" c="gray.6">
-            Twoje dane nigdy nie opuszczają przeglądarki.
+            {t('dataStays')}
           </Text>
         </Group>
       </Container>

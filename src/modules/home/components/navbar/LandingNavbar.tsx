@@ -14,7 +14,12 @@ import {
 } from '@mantine/core';
 import { useWindowScroll } from '@mantine/hooks';
 import { IconArrowRight, IconFileText } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
+
+import { Link } from '@/i18n/navigation';
+
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface LandingNavbarProps {
   onPrivacyOpen: () => void;
@@ -25,6 +30,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
   const [scroll] = useWindowScroll();
   const [drawerOpened, setDrawerOpened] = useState(false);
   const scrolled = scroll.y > 10;
+  const t = useTranslations('navbar');
 
   return (
     <Box
@@ -38,7 +44,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
       <Container size="xl">
         <Group justify="space-between" align="center" className="h-16">
           {/* Logo */}
-          <Anchor href="/" className="no-underline">
+          <Anchor component={Link} href="/" className="no-underline">
             <Group gap={6} align="center">
               <Box className="w-7 h-7 rounded-[6px] flex items-center justify-center" bg="blue.6">
                 <IconFileText size={16} color="white" stroke={2} />
@@ -56,23 +62,26 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
           {/* Desktop nav links */}
           <Group gap="xl" visibleFrom="md">
             <Anchor href="#how-it-works" c="gray.7" fz="sm" fw={500} className="no-underline">
-              Jak to działa
+              {t('howItWorks')}
             </Anchor>
             <Anchor href="#features" c="gray.7" fz="sm" fw={500} className="no-underline">
-              Funkcje
+              {t('features')}
             </Anchor>
             <UnstyledButton onClick={onPrivacyOpen} c="gray.7" fz="sm" fw={500}>
-              Prywatność
+              {t('privacy')}
             </UnstyledButton>
             <UnstyledButton onClick={onFaqOpen} c="gray.7" fz="sm" fw={500}>
-              FAQ
+              {t('faq')}
             </UnstyledButton>
           </Group>
 
           <Group gap="md">
+            {/* Language switcher — desktop */}
+            <LanguageSwitcher />
+
             {/* Desktop CTA */}
             <Button
-              component="a"
+              component={Link}
               href="/app/new"
               variant="filled"
               color="blue"
@@ -80,7 +89,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
               visibleFrom="md"
               rightSection={<IconArrowRight size={16} />}
             >
-              Stwórz CV
+              {t('createCv')}
             </Button>
 
             {/* Mobile burger */}
@@ -89,7 +98,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
               onClick={() => setDrawerOpened((o) => !o)}
               hiddenFrom="md"
               size="sm"
-              aria-label="Otwórz menu"
+              aria-label={t('openMenu')}
             />
           </Group>
         </Group>
@@ -127,7 +136,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
             fw={500}
             className="no-underline"
           >
-            Jak to działa
+            {t('howItWorks')}
           </Anchor>
           <Anchor
             href="#features"
@@ -137,7 +146,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
             fw={500}
             className="no-underline"
           >
-            Funkcje
+            {t('features')}
           </Anchor>
           <UnstyledButton
             onClick={() => {
@@ -148,7 +157,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
             fz="lg"
             fw={500}
           >
-            Prywatność
+            {t('privacy')}
           </UnstyledButton>
           <UnstyledButton
             onClick={() => {
@@ -159,10 +168,11 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
             fz="lg"
             fw={500}
           >
-            FAQ
+            {t('faq')}
           </UnstyledButton>
+          <LanguageSwitcher />
           <Button
-            component="a"
+            component={Link}
             href="/app/new"
             variant="filled"
             color="blue"
@@ -171,7 +181,7 @@ export function LandingNavbar({ onPrivacyOpen, onFaqOpen }: LandingNavbarProps) 
             mt="md"
             rightSection={<IconArrowRight size={18} />}
           >
-            Stwórz CV za darmo
+            {t('createCvFree')}
           </Button>
         </Stack>
       </Drawer>

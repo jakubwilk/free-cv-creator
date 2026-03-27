@@ -4,6 +4,9 @@ import { useMotionPreferences } from '@common/hooks';
 import { Badge, Box, Button, Container, Group, Stack, Text, Title } from '@mantine/core';
 import { IconArrowRight, IconDownload, IconUserOff, IconWifi } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+
+import { Link } from '@/i18n/navigation';
 
 import { HeroMockup } from './HeroMockup';
 
@@ -23,6 +26,7 @@ const fadeIn = {
 
 export function HeroSection() {
   const { initial } = useMotionPreferences();
+  const t = useTranslations('hero');
 
   return (
     <Box
@@ -43,7 +47,7 @@ export function HeroSection() {
                   radius="xl"
                   className="text-xs font-semibold tracking-[0.04em] uppercase px-4 py-2"
                 >
-                  100% darmowe · Bez konta · Twoje dane zostają u Ciebie
+                  {t('badge')}
                 </Badge>
               </motion.div>
 
@@ -56,25 +60,24 @@ export function HeroSection() {
                   className="tracking-[-0.03em]"
                   style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)' }}
                 >
-                  Stwórz profesjonalne CV{' '}
+                  {t('titlePart1')}{' '}
                   <Text component="span" c="blue.6" inherit>
-                    całkowicie za darmo
+                    {t('titleHighlight')}
                   </Text>{' '}
-                  — bez konta, bez haczyków.
+                  {t('titlePart2')}
                 </Title>
               </motion.div>
 
               <motion.div variants={fadeUp(0.2)} initial={initial} animate="visible">
                 <Text fz={{ base: 'md', md: 'lg' }} c="gray.7" lh={1.7} maw={520}>
-                  Wypełnij formularz, wybierz szablon i pobierz gotowe CV jako PDF. Żadne Twoje dane
-                  nie trafiają na serwer — wszystko działa w Twojej przeglądarce.
+                  {t('description')}
                 </Text>
               </motion.div>
 
               <motion.div variants={fadeUp(0.3)} initial={initial} animate="visible">
                 <Group gap="md" wrap="wrap">
                   <Button
-                    component="a"
+                    component={Link}
                     href="/app/new"
                     variant="filled"
                     color="blue"
@@ -84,7 +87,7 @@ export function HeroSection() {
                     fw={700}
                     fz="md"
                   >
-                    Stwórz CV za darmo
+                    {t('ctaButton')}
                   </Button>
                 </Group>
               </motion.div>
@@ -94,19 +97,19 @@ export function HeroSection() {
                   <Group gap={6}>
                     <IconUserOff size={16} color="var(--mantine-color-gray-6)" aria-hidden />
                     <Text fz="sm" c="gray.6" fw={500}>
-                      Bez rejestracji
+                      {t('noRegistration')}
                     </Text>
                   </Group>
                   <Group gap={6}>
                     <IconDownload size={16} color="var(--mantine-color-gray-6)" aria-hidden />
                     <Text fz="sm" c="gray.6" fw={500}>
-                      Pobierz PDF
+                      {t('downloadPdf')}
                     </Text>
                   </Group>
                   <Group gap={6}>
                     <IconWifi size={16} color="var(--mantine-color-gray-6)" aria-hidden />
                     <Text fz="sm" c="gray.6" fw={500}>
-                      Działa offline
+                      {t('worksOffline')}
                     </Text>
                   </Group>
                 </Group>
