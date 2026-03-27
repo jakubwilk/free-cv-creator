@@ -5,38 +5,37 @@ import { useMotionPreferences } from '@common/hooks';
 import { Box, Container, Stack, Text, ThemeIcon, Title } from '@mantine/core';
 import { IconDownload, IconForms, IconLayoutGrid } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
-
-const steps = [
-  {
-    icon: <IconLayoutGrid size={32} />,
-    title: 'Wybierz szablon',
-    description:
-      'Przeglądaj galerię profesjonalnych szablonów i wybierz ten, który pasuje do Twojej branży.',
-  },
-  {
-    icon: <IconForms size={32} />,
-    title: 'Wypełnij formularz',
-    description:
-      'Uzupełnij sekcje CV — dane osobowe, doświadczenie, wykształcenie i umiejętności. Podgląd aktualizuje się na bieżąco.',
-  },
-  {
-    icon: <IconDownload size={32} />,
-    title: 'Pobierz PDF',
-    description:
-      'Gotowe! Pobierz CV jako PDF w jakości druku — selektowalny tekst, przyjazny dla systemów ATS.',
-  },
-];
+import { useTranslations } from 'next-intl';
 
 export function HowItWorksSection() {
   const { shouldReduceMotion } = useMotionPreferences();
+  const t = useTranslations('howItWorks');
+
+  const steps = [
+    {
+      icon: <IconLayoutGrid size={32} />,
+      title: t('steps.chooseTemplate.title'),
+      description: t('steps.chooseTemplate.description'),
+    },
+    {
+      icon: <IconForms size={32} />,
+      title: t('steps.fillForm.title'),
+      description: t('steps.fillForm.description'),
+    },
+    {
+      icon: <IconDownload size={32} />,
+      title: t('steps.downloadPdf.title'),
+      description: t('steps.downloadPdf.description'),
+    },
+  ];
 
   return (
     <Box component="section" id="how-it-works" className="py-20" bg="gray.0">
       <Container size="xl">
         <SectionHeader
-          label="Jak zacząć"
-          title="Jak to działa?"
-          description="Trzy kroki do gotowego, profesjonalnego CV."
+          label={t('sectionLabel')}
+          title={t('sectionTitle')}
+          description={t('sectionDescription')}
         />
 
         <Box className="relative">

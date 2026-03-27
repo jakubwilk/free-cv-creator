@@ -4,9 +4,14 @@ import { useMotionPreferences } from '@common/hooks';
 import { Box, Button, Container, Stack, Text, Title } from '@mantine/core';
 import { IconArrowRight } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+
+import { Link } from '@/i18n/navigation';
 
 export function FinalCtaSection() {
   const { shouldReduceMotion } = useMotionPreferences();
+  const tHero = useTranslations('hero');
+  const tNavbar = useTranslations('navbar');
 
   return (
     <Box component="section" className="py-20" bg="dark.9">
@@ -37,7 +42,7 @@ export function FinalCtaSection() {
               </Text>
             </Stack>
             <Button
-              component="a"
+              component={Link}
               href="/app/new"
               variant="filled"
               color="blue"
@@ -46,10 +51,10 @@ export function FinalCtaSection() {
               rightSection={<IconArrowRight size={22} />}
               className="text-[1.125rem] font-bold px-10 h-[60px]"
             >
-              Stwórz swoje CV teraz
+              {tNavbar('createCvFree')}
             </Button>
             <Text fz="xs" c="gray.6">
-              Bez konta · Bez karty kredytowej · 100% darmowe
+              {tHero('noRegistration')} · {tHero('downloadPdf')} · 100% darmowe
             </Text>
           </Stack>
         </motion.div>

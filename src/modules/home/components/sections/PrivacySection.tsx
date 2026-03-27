@@ -1,13 +1,16 @@
 'use client';
 
 import { useMotionPreferences } from '@common/hooks';
-import { PRIVACY_POINTS } from '@home/models';
 import { Box, Container, Grid, Group, Stack, Text, ThemeIcon, Title } from '@mantine/core';
 import { IconCheck, IconLock, IconServer, IconShieldLock, IconX } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+
+const PRIVACY_KEYS = ['noBackend', 'noAccount', 'dataGone'] as const;
 
 export function PrivacySection() {
   const { shouldReduceMotion } = useMotionPreferences();
+  const t = useTranslations('privacy');
 
   return (
     <Box
@@ -31,7 +34,7 @@ export function PrivacySection() {
             >
               <Stack gap="xl">
                 <Text fz="xs" fw={700} c="blue.1" className="tracking-widest uppercase">
-                  Prywatność
+                  {t('sectionLabel')}
                 </Text>
                 <Title
                   order={2}
@@ -40,15 +43,13 @@ export function PrivacySection() {
                   lh={1.2}
                   style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}
                 >
-                  Twoje dane nigdy nie opuszczają przeglądarki.
+                  {t('sectionTitle')}
                 </Title>
                 <Text c="blue.1" fz="lg" lh={1.7}>
-                  Free CV Creator działa w 100% lokalnie — żaden serwer nie widzi Twojego imienia,
-                  adresu e-mail ani historii zatrudnienia. Nie ma logowania, nie ma bazy danych, nie
-                  ma ciasteczek śledzących.
+                  {t('sectionDescription')}
                 </Text>
                 <Stack gap="lg">
-                  {PRIVACY_POINTS.map((point, i) => (
+                  {PRIVACY_KEYS.map((key, i) => (
                     <Group key={i} gap="md" align="flex-start" wrap="nowrap">
                       <ThemeIcon
                         size={36}
@@ -60,10 +61,10 @@ export function PrivacySection() {
                       </ThemeIcon>
                       <Stack gap={2}>
                         <Text fw={700} c="white" fz="md">
-                          {point.title}
+                          {t(`points.${key}.title`)}
                         </Text>
                         <Text c="blue.1" fz="sm" lh={1.6}>
-                          {point.description}
+                          {t(`points.${key}.description`)}
                         </Text>
                       </Stack>
                     </Group>
@@ -125,12 +126,12 @@ export function PrivacySection() {
                     <IconShieldLock size={32} color="white" />
                   </ThemeIcon>
                   <Text c="white" fw={700} fz="lg" ta="center">
-                    Dane tylko w Twojej przeglądarce
+                    {t('browserOnlyLabel')}
                   </Text>
                   <Group gap={6}>
                     <IconServer size={16} color="rgba(255,255,255,0.5)" aria-hidden />
                     <Text fz="xs" c="rgba(255,255,255,0.5)">
-                      Serwer nie istnieje
+                      {t('noServer')}
                     </Text>
                     <IconX size={14} color="rgba(239, 68, 68, 0.8)" aria-hidden />
                   </Group>

@@ -5,49 +5,49 @@ import { useMotionPreferences } from '@common/hooks';
 import { Box, Container, Stack, Text, ThemeIcon } from '@mantine/core';
 import { IconEye, IconFileExport, IconGift, IconShield, IconWifiOff } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 import styles from './FeaturesSection.module.css';
 
-const features = [
-  {
-    icon: <IconGift size={24} />,
-    title: 'W pełni darmowe',
-    description: "Zero ukrytych opłat, zero paywall'i. Pobierz PDF już przy pierwszym użyciu.",
-  },
-  {
-    icon: <IconShield size={24} />,
-    title: 'Twoje dane są bezpieczne',
-    description: 'Dane CV nigdy nie opuszczają Twojej przeglądarki. Brak serwera, brak śledzenia.',
-  },
-  {
-    icon: <IconEye size={24} />,
-    title: 'Live Preview',
-    description:
-      'Podgląd szablonu aktualizuje się w czasie rzeczywistym podczas wypełniania formularza.',
-  },
-  {
-    icon: <IconFileExport size={24} />,
-    title: 'Eksport PDF i JSON',
-    description:
-      'Pobierz gotowe CV jako PDF lub zapisz dane do pliku JSON — do późniejszego użycia.',
-  },
-  {
-    icon: <IconWifiOff size={24} />,
-    title: 'Działa offline',
-    description: 'Zainstaluj jako aplikację PWA i pracuj nad CV bez dostępu do internetu.',
-  },
-];
-
 export function FeaturesSection() {
   const { shouldReduceMotion } = useMotionPreferences();
+  const t = useTranslations('features');
+
+  const features = [
+    {
+      icon: <IconGift size={24} />,
+      title: t('items.free.title'),
+      description: t('items.free.description'),
+    },
+    {
+      icon: <IconShield size={24} />,
+      title: t('items.secure.title'),
+      description: t('items.secure.description'),
+    },
+    {
+      icon: <IconEye size={24} />,
+      title: t('items.livePreview.title'),
+      description: t('items.livePreview.description'),
+    },
+    {
+      icon: <IconFileExport size={24} />,
+      title: t('items.export.title'),
+      description: t('items.export.description'),
+    },
+    {
+      icon: <IconWifiOff size={24} />,
+      title: t('items.offline.title'),
+      description: t('items.offline.description'),
+    },
+  ];
 
   return (
     <Box component="section" id="features" className="py-20" bg="dark.9">
       <Container size="xl">
         <SectionHeader
-          label="Możliwości"
-          title="Wszystko czego potrzebujesz"
-          description="Zero subskrypcji, zero konta — pełna funkcjonalność dostępna od razu."
+          label={t('sectionLabel')}
+          title={t('sectionTitle')}
+          description={t('sectionDescription')}
           labelColor="blue.4"
           titleColor="white"
           descriptionColor="gray.5"

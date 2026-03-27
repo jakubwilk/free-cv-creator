@@ -5,6 +5,9 @@ import { useMotionPreferences } from '@common/hooks';
 import { Box, Button, Container, Grid, Stack, Text } from '@mantine/core';
 import { IconArrowRight } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+
+import { Link } from '@/i18n/navigation';
 
 import { TemplateMockupCard } from './TemplateMockupCard';
 
@@ -16,6 +19,7 @@ const templates = [
 
 export function TemplateShowcaseSection() {
   const { shouldReduceMotion } = useMotionPreferences();
+  const t = useTranslations('navbar');
 
   return (
     <Box component="section" id="templates" className="py-20 bg-white">
@@ -47,14 +51,14 @@ export function TemplateShowcaseSection() {
             5 szablonów na start · Więcej wkrótce
           </Text>
           <Button
-            component="a"
+            component={Link}
             href="/app/new"
             variant="filled"
             color="blue"
             size="lg"
             rightSection={<IconArrowRight size={20} />}
           >
-            Wybierz szablon
+            {t('createCv')}
           </Button>
         </Stack>
       </Container>

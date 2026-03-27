@@ -1,14 +1,18 @@
 'use client';
 
 import { SectionHeader } from '@common/components';
-import { FAQ_ITEMS } from '@home/models';
 import { Accordion, Box, Container } from '@mantine/core';
+import { useTranslations } from 'next-intl';
+
+const FAQ_KEYS = ['free', 'privacy', 'pdf', 'templates', 'offline', 'import'] as const;
 
 export function FaqSection() {
+  const t = useTranslations('faq');
+
   return (
     <Box component="section" id="faq" className="py-20" bg="gray.0">
       <Container size="md">
-        <SectionHeader label="Pytania" title="Najczęściej zadawane pytania" mb={48} />
+        <SectionHeader label={t('sectionLabel')} title={t('sectionTitle')} mb={48} />
 
         <Accordion
           variant="separated"
@@ -34,10 +38,10 @@ export function FaqSection() {
             chevron: { color: 'var(--mantine-color-blue-6)' },
           }}
         >
-          {FAQ_ITEMS.map((item) => (
-            <Accordion.Item key={item.value} value={item.value}>
-              <Accordion.Control>{item.question}</Accordion.Control>
-              <Accordion.Panel>{item.answer}</Accordion.Panel>
+          {FAQ_KEYS.map((key) => (
+            <Accordion.Item key={key} value={key}>
+              <Accordion.Control>{t(`items.${key}.question`)}</Accordion.Control>
+              <Accordion.Panel>{t(`items.${key}.answer`)}</Accordion.Panel>
             </Accordion.Item>
           ))}
         </Accordion>
