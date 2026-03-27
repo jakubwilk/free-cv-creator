@@ -1,5 +1,7 @@
 # Free CV Creator
 
+![image](https://i.imgur.com/mLGEtgB.png)
+
 A free, privacy-first CV builder that runs entirely in your browser. No account required, no data stored on any server — your information never leaves your device.
 
 > Create a professional CV, download it as PDF, and save it as JSON to edit later. That's it.
