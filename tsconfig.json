@@ -19,7 +19,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@config/*": ["./src/config/*"],
+      "@common/*": ["./src/modules/common/*"],
+      "@home/*": ["./src/modules/home/*"],
+      "@dashboard/*": ["./src/modules/dashboard/*"],
+      "@editor/*": ["./src/modules/editor/*"]
     }
   },
   "include": [

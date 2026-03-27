@@ -23,12 +23,45 @@ const geistMono = Geist_Mono({
 });
 
 const theme = createTheme({
-  /** Put your Mantine theme overrides here */
+  fontFamily: 'var(--font-geist-sans), system-ui, sans-serif',
+  fontFamilyMonospace: 'var(--font-geist-mono), monospace',
+  primaryColor: 'blue',
+  primaryShade: { light: 6, dark: 5 },
+  defaultRadius: 'md',
+  headings: {
+    fontFamily: 'var(--font-geist-sans), system-ui, sans-serif',
+    fontWeight: '800',
+    sizes: {
+      h1: { fontSize: '3.5rem', lineHeight: '1.1' },
+      h2: { fontSize: '2.25rem', lineHeight: '1.2' },
+      h3: { fontSize: '1.5rem', lineHeight: '1.3' },
+      h4: { fontSize: '1.125rem', lineHeight: '1.4' },
+    },
+  },
+  components: {
+    Button: {
+      defaultProps: { radius: 'md' },
+      styles: { root: { fontWeight: 600, letterSpacing: '0.01em' } },
+    },
+    Container: {
+      defaultProps: { size: 'xl' },
+    },
+  },
 });
 
 export const metadata: Metadata = {
-  title: 'Free CV Creator',
-  description: 'Create a professional CV for free',
+  title: 'Free CV Creator — Darmowy kreator CV online',
+  description:
+    'Stwórz profesjonalne CV za darmo. Bez rejestracji, bez konta. Twoje dane zostają w przeglądarce. Pobierz PDF od razu.',
+  keywords: 'kreator CV, CV online, darmowe CV, stwórz CV, CV PDF, kreator CV bez rejestracji',
+  openGraph: {
+    title: 'Free CV Creator — Darmowy kreator CV online',
+    description:
+      'Stwórz profesjonalne CV za darmo. Bez rejestracji, bez konta. Pobierz PDF od razu.',
+    type: 'website',
+    locale: 'pl_PL',
+    siteName: 'Free CV Creator',
+  },
 };
 
 export default function RootLayout({
@@ -38,7 +71,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="pl"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       {...mantineHtmlProps}
     >
