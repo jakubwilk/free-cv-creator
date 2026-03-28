@@ -114,6 +114,21 @@ export function HeroSection() {
                   </Group>
                 </Group>
               </motion.div>
+
+              <motion.div variants={fadeUp(0.5)} initial={initial} animate="visible">
+                <Text
+                  fz="xs"
+                  c="gray.5"
+                  lh={1.6}
+                  maw={400}
+                  style={{
+                    borderLeft: '2px solid var(--mantine-color-blue-5)',
+                    paddingLeft: '12px',
+                  }}
+                >
+                  {t('manifesto')}
+                </Text>
+              </motion.div>
             </Stack>
           </div>
 

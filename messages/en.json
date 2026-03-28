@@ -17,15 +17,16 @@
     "createCvFree": "Create CV for free"
   },
   "hero": {
-    "badge": "100% free · No account · Your data stays with you",
-    "titlePart1": "Create a professional CV",
-    "titleHighlight": "completely for free",
-    "titlePart2": "— no account, no strings attached.",
+    "badge": "Your edge on the job market · No account · Your data stays with you",
+    "titlePart1": "Employers receive",
+    "titleHighlight": "dozens of CVs.",
+    "titlePart2": "Yours will find them.",
     "description": "Fill in the form, choose a template, and download your CV as a PDF. None of your data goes to a server — everything runs in your browser.",
     "ctaButton": "Create CV for free",
     "noRegistration": "No registration",
     "downloadPdf": "Download PDF",
-    "worksOffline": "Works offline"
+    "worksOffline": "Works offline",
+    "manifesto": "Candidates hunt. Employers choose. We give you the edge."
   },
   "howItWorks": {
     "sectionLabel": "Get started",
@@ -126,8 +127,13 @@
       }
     }
   },
+  "finalCta": {
+    "titlePart1": "Your CV is not a request —",
+    "titleHighlight": "it's an offer.",
+    "subtitle": "Build it in 5 minutes. No registration. No payment."
+  },
   "footer": {
-    "tagline": "A free CV builder running entirely in your browser. No account, no tracking, no paywalls.",
+    "tagline": "Free CV builder. Your edge on the job market — no account, no tracking, no paywalls.",
     "navigationLabel": "Navigation",
     "howItWorks": "How it works",
     "features": "Features",

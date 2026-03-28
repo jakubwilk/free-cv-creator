@@ -10,8 +10,9 @@ import { Link } from '@/i18n/navigation';
 
 export function FinalCtaSection() {
   const { shouldReduceMotion } = useMotionPreferences();
-  const tHero = useTranslations('hero');
+  const t = useTranslations('finalCta');
   const tNavbar = useTranslations('navbar');
+  const tHero = useTranslations('hero');
 
   return (
     <Box component="section" className="py-20" bg="dark.9">
@@ -32,13 +33,13 @@ export function FinalCtaSection() {
                 className="tracking-[-0.02em]"
                 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}
               >
-                Gotowe CV w mniej niż{' '}
+                {t('titlePart1')}{' '}
                 <Text component="span" c="blue.4" inherit>
-                  10 minut.
+                  {t('titleHighlight')}
                 </Text>
               </Title>
               <Text c="gray.5" fz="lg" lh={1.7} maw={440}>
-                Bez rejestracji. Bez płacenia. Twoje dane zostają u Ciebie.
+                {t('subtitle')}
               </Text>
             </Stack>
             <Button

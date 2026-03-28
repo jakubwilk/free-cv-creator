@@ -17,15 +17,16 @@
     "createCvFree": "Stwórz CV za darmo"
   },
   "hero": {
-    "badge": "100% darmowe · Bez konta · Twoje dane zostają u Ciebie",
-    "titlePart1": "Stwórz profesjonalne CV",
-    "titleHighlight": "całkowicie za darmo",
-    "titlePart2": "— bez konta, bez haczyków.",
+    "badge": "Twoja przewaga na rynku pracy · Bez konta · Twoje dane zostają u Ciebie",
+    "titlePart1": "Pracodawcy dostają",
+    "titleHighlight": "dziesiątki CV.",
+    "titlePart2": "Twoje ich znajdzie.",
     "description": "Wypełnij formularz, wybierz szablon i pobierz gotowe CV jako PDF. Żadne Twoje dane nie trafiają na serwer — wszystko działa w Twojej przeglądarce.",
     "ctaButton": "Stwórz CV za darmo",
     "noRegistration": "Bez rejestracji",
     "downloadPdf": "Pobierz PDF",
-    "worksOffline": "Działa offline"
+    "worksOffline": "Działa offline",
+    "manifesto": "Kandydaci polują. Pracodawcy wybierają. My dajemy Ci narzędzie."
   },
   "howItWorks": {
     "sectionLabel": "Jak zacząć",
@@ -126,8 +127,13 @@
       }
     }
   },
+  "finalCta": {
+    "titlePart1": "Twoje CV to nie prośba —",
+    "titleHighlight": "to oferta.",
+    "subtitle": "Stwórz je w 5 minut. Bez rejestracji. Bez płacenia."
+  },
   "footer": {
-    "tagline": "Bezpłatny kreator CV działający w całości w Twojej przeglądarce. Bez konta, bez śledzenia, bez paywall'i.",
+    "tagline": "Bezpłatny kreator CV. Twoja przewaga na rynku pracy — bez konta, bez śledzenia, bez paywall'i.",
     "navigationLabel": "Nawigacja",
     "howItWorks": "Jak to działa",
     "features": "Funkcje",
