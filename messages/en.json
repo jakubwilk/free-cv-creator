@@ -148,5 +148,23 @@
   "languageSwitcher": {
     "ariaLabel": "Change language",
     "menuLabel": "Język / Language"
+  },
+  "dashboard": {
+    "pageTitle": "My CVs",
+    "pageSubtitle": "Manage your CV documents saved in the browser.",
+    "backToHome": "Back to homepage",
+    "emptyTitle": "You have no CVs yet",
+    "emptyDescription": "Create your first CV in minutes — no registration, no account needed.",
+    "createFirstCv": "Create your first CV",
+    "lastEdited": "Last edited",
+    "edit": "Edit",
+    "duplicate": "Duplicate",
+    "downloadJson": "Download JSON",
+    "delete": "Delete",
+    "moreActions": "More actions",
+    "importTitle": "Import CV from JSON file",
+    "importDescription": "Drag and drop a .json file or click to select one.",
+    "dropzoneTitle": "Drag a .json file here or click to select",
+    "dropzoneDescription": "Supported format: .json (exported from Free CV Creator)"
   }
 }

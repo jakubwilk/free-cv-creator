@@ -106,7 +106,6 @@ export default async function LocaleLayout({
       className={`${plusJakartaSans.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
       {...mantineHtmlProps}
     >
-
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider messages={messages}>
           <MantineProvider theme={theme}>{children}</MantineProvider>
