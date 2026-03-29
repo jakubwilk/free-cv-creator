@@ -2,19 +2,20 @@
 
 import { Box, Group, rem, Stack, Text } from '@mantine/core';
 import { Dropzone } from '@mantine/dropzone';
+import { notifications } from '@mantine/notifications';
 import { IconFileUpload, IconUpload, IconX } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 
 import { useRouter } from '@/i18n/navigation';
 
-import type { CvEntry } from '../models';
+import type { ICvEntry } from '../models';
 import { loadCvList, parseCvJson, saveCvList } from '../utils';
 
-interface ImportDropzoneProps {
-  onImport: (entry: CvEntry) => void;
+interface IImportDropzoneProps {
+  onImport: (entry: ICvEntry) => void;
 }
 
-export function ImportDropzone({ onImport }: ImportDropzoneProps) {
+export function ImportDropzone({ onImport }: IImportDropzoneProps) {
   const t = useTranslations('dashboard');
   const router = useRouter();
 
@@ -25,9 +26,8 @@ export function ImportDropzone({ onImport }: ImportDropzoneProps) {
     try {
       const entry = await parseCvJson(file);
       const existing = loadCvList();
-      // Replace if same id exists, otherwise prepend
       const idx = existing.findIndex((cv) => cv.id === entry.id);
-      let next: CvEntry[];
+      let next: ICvEntry[];
       if (idx >= 0) {
         next = [...existing];
         next[idx] = entry;
@@ -38,13 +38,28 @@ export function ImportDropzone({ onImport }: ImportDropzoneProps) {
       onImport(entry);
       router.push(`/app/${entry.id}`);
     } catch {
-      // error handled silently; UI feedback can be added with notifications
+      notifications.show({
+        title: t('importErrorParseTitle'),
+        message: t('importErrorParseMessage'),
+        color: 'orange',
+        autoClose: 5000,
+      });
     }
+  };
+
+  const handleReject = () => {
+    notifications.show({
+      title: t('importErrorTypeTitle'),
+      message: t('importErrorTypeMessage'),
+      color: 'orange',
+      autoClose: 5000,
+    });
   };
 
   return (
     <Dropzone
       onDrop={handleDrop}
+      onReject={handleReject}
       accept={{ 'application/json': ['.json'] }}
       maxFiles={1}
       radius="md"

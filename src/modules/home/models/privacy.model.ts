@@ -1,9 +1,9 @@
-export interface PrivacyPoint {
+export interface IPrivacyPoint {
   title: string;
   description: string;
 }
 
-export const PRIVACY_POINTS: PrivacyPoint[] = [
+export const PRIVACY_POINTS: IPrivacyPoint[] = [
   {
     title: 'Brak serwera, brak bazy danych',
     description:

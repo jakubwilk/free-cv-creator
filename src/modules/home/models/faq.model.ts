@@ -1,10 +1,10 @@
-export interface FaqItem {
+export interface IFaqItem {
   value: string;
   question: string;
   answer: string;
 }
 
-export const FAQ_ITEMS: FaqItem[] = [
+export const FAQ_ITEMS: IFaqItem[] = [
   {
     value: 'free',
     question: 'Czy aplikacja jest naprawdę całkowicie darmowa?',

@@ -13,12 +13,12 @@ import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/navigation';
 
-import type { CvEntry } from '../models';
+import type { ICvEntry } from '../models';
 import { downloadCvJson } from '../utils';
 
-interface CvCardProps {
-  cv: CvEntry;
-  onDuplicate: (cv: CvEntry) => void;
+interface ICvCardProps {
+  cv: ICvEntry;
+  onDuplicate: (cv: ICvEntry) => void;
   onDelete: (id: string) => void;
 }
 
@@ -36,7 +36,7 @@ function formatDate(isoString: string, locale: string): string {
   }
 }
 
-export function CvCard({ cv, onDuplicate, onDelete }: CvCardProps) {
+export function CvCard({ cv, onDuplicate, onDelete }: ICvCardProps) {
   const t = useTranslations('dashboard');
 
   return (

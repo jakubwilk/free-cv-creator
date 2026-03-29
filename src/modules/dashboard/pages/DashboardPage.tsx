@@ -5,13 +5,13 @@ import { useTranslations } from 'next-intl';
 
 import { CvCard, DashboardNavbar, EmptyState, ImportDropzone } from '../components';
 import { useCvList } from '../hooks';
-import type { CvEntry } from '../models';
+import type { ICvEntry } from '../models';
 
 export function DashboardPage() {
   const t = useTranslations('dashboard');
   const { cvList, addCv, removeCv, duplicateCv } = useCvList();
 
-  const handleImport = (entry: CvEntry) => {
+  const handleImport = (entry: ICvEntry) => {
     addCv(entry);
   };
 

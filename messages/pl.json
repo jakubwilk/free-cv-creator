@@ -165,6 +165,10 @@
     "importTitle": "Wczytaj CV z pliku JSON",
     "importDescription": "Przeciągnij i upuść plik .json lub kliknij, aby go wybrać.",
     "dropzoneTitle": "Przeciągnij plik .json lub kliknij, aby wybrać",
-    "dropzoneDescription": "Obsługiwany format: .json (eksport z Free CV Creator)"
+    "dropzoneDescription": "Obsługiwany format: .json (eksport z Free CV Creator)",
+    "importErrorTypeTitle": "Niepoprawny format pliku",
+    "importErrorTypeMessage": "Akceptowane są wyłącznie pliki .json wyeksportowane z Free CV Creator.",
+    "importErrorParseTitle": "Nie można wczytać pliku",
+    "importErrorParseMessage": "Plik jest uszkodzony lub nie pochodzi z Free CV Creator."
   }
 }

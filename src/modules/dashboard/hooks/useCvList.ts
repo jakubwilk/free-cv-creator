@@ -2,13 +2,13 @@
 
 import { useCallback, useState } from 'react';
 
-import type { CvEntry } from '../models';
-import { duplicateCvEntry, loadCvList, saveCvList } from '../utils';
+import type { ICvEntry } from '../models';
+import { duplicateICvEntry, loadCvList, saveCvList } from '../utils';
 
 export function useCvList() {
-  const [cvList, setCvList] = useState<CvEntry[]>(() => loadCvList());
+  const [cvList, setCvList] = useState<ICvEntry[]>(() => loadCvList());
 
-  const addCv = useCallback((entry: CvEntry) => {
+  const addCv = useCallback((entry: ICvEntry) => {
     setCvList((prev) => {
       const next = [entry, ...prev];
       saveCvList(next);
@@ -24,8 +24,8 @@ export function useCvList() {
     });
   }, []);
 
-  const duplicateCv = useCallback((entry: CvEntry) => {
-    const copy = duplicateCvEntry(entry);
+  const duplicateCv = useCallback((entry: ICvEntry) => {
+    const copy = duplicateICvEntry(entry);
     setCvList((prev) => {
       const idx = prev.findIndex((cv) => cv.id === entry.id);
       const next = [...prev];

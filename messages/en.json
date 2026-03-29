@@ -165,6 +165,10 @@
     "importTitle": "Import CV from JSON file",
     "importDescription": "Drag and drop a .json file or click to select one.",
     "dropzoneTitle": "Drag a .json file here or click to select",
-    "dropzoneDescription": "Supported format: .json (exported from Free CV Creator)"
+    "dropzoneDescription": "Supported format: .json (exported from Free CV Creator)",
+    "importErrorTypeTitle": "Invalid file format",
+    "importErrorTypeMessage": "Only .json files exported from Free CV Creator are accepted.",
+    "importErrorParseTitle": "Could not load file",
+    "importErrorParseMessage": "The file is corrupted or was not exported from Free CV Creator."
   }
 }

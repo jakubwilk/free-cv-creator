@@ -1,14 +1,17 @@
 'use client';
 
-import { Anchor, Box, Container, Group, Text } from '@mantine/core';
-import { IconArrowLeft, IconFileText } from '@tabler/icons-react';
+import { AppLogo, LanguageSwitcher } from '@common/components';
+import { Anchor, Box, Container, Group } from '@mantine/core';
+import { IconArrowLeft } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/navigation';
 
-import { LanguageSwitcher } from './LanguageSwitcher';
+interface IDashboardNavbarProps {
+  backHref?: string;
+}
 
-export function DashboardNavbar() {
+export function DashboardNavbar({ backHref = '/' }: IDashboardNavbarProps) {
   const t = useTranslations('dashboard');
 
   return (
@@ -25,28 +28,14 @@ export function DashboardNavbar() {
     >
       <Container size="xl">
         <Group justify="space-between" align="center" className="h-16">
-          {/* Logo */}
-          <Anchor component={Link} href="/" underline="never">
-            <Group gap={6} align="center">
-              <Box className="w-7 h-7 rounded-[6px] flex items-center justify-center" bg="blue.6">
-                <IconFileText size={16} color="white" stroke={2} />
-              </Box>
-              <Text fw={700} fz="lg" c="dark.9" className="tracking-[-0.02em]">
-                Free{' '}
-                <Text component="span" c="blue.6" fw={700} fz="lg">
-                  CV
-                </Text>{' '}
-                Creator
-              </Text>
-            </Group>
-          </Anchor>
+          <AppLogo />
 
           <Group gap="md">
             <LanguageSwitcher />
 
             <Anchor
               component={Link}
-              href="/"
+              href={backHref}
               c="gray.7"
               fz="sm"
               fw={500}
