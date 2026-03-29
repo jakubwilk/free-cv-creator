@@ -1,1 +1,1 @@
-// barrel file — add exports here
+export { DashboardPage } from './DashboardPage';
