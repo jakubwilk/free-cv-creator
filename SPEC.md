@@ -51,24 +51,40 @@ Narzędzie, które jest:
 
 ## 3. Widoki i przepływy użytkownika
 
+### Dwa równoległe tryby działania
+
+Aplikacja funkcjonuje w dwóch niezależnych trybach, które współistnieją na stałe:
+
+- **Tryb gościa** — zawsze darmowy, bez konta, dane wyłącznie w localStorage. Namespace `/app/*`. Nie wymaga logowania i nigdy nie będzie tego wymagać.
+- **Tryb konta** *(przyszłość)* — opcjonalne konto użytkownika, CV zapisane na serwerze, dostępne po zalogowaniu. Namespace `/dashboard/*`.
+
 ### Mapa widoków
 
 ```
-/           Landing Page
-/app        Dashboard — lista CV
-/app/new    Kreator nowego CV
-/app/[id]   Edytor CV
+/                        Landing Page
+
+/auth/login              Logowanie
+/auth/register           Rejestracja
+/auth/forgot-password    Resetowanie hasła
+
+/app                     Dashboard gościa — lista CV z localStorage
+/app/new                 Kreator nowego CV (gość)
+/app/[id]                Edytor CV (gość, localStorage)
+
+/dashboard               Panel użytkownika — lista CV z serwera     [przyszłość]
+/dashboard/cv/new        Kreator nowego CV (zalogowany)             [przyszłość]
+/dashboard/cv/[id]       Edytor CV (zalogowany, dane z serwera)     [przyszłość]
 ```
 
-### Opis widoków
+### Opis widoków — tryb gościa (aktualny)
 
 **`/` — Landing Page**
 Jedyna strona renderowana po stronie serwera (SSR) dla celów SEO. Zawiera: opis produktu, podgląd szablonów, sekcję prywatności ("Twoje dane nigdy nie opuszczają przeglądarki"), CTA "Stwórz CV za darmo".
 
-**`/app` — Dashboard**
+**`/app` — Dashboard gościa**
 Lista kafelków CV wczytywanych z `cv_index` w localStorage. Każdy kafelek pokazuje nazwę CV, szablon, datę edycji. Dostępne akcje: utwórz nowe, edytuj, duplikuj, usuń, pobierz PDF, pobierz JSON. Pusty stan z CTA gdy brak CV.
 
-**`/app/new` — Kreator nowego CV**
+**`/app/new` — Kreator nowego CV (gość)**
 Dwuetapowy wizard:
 
 1. Wybór szablonu (galeria z miniaturami)
@@ -76,8 +92,20 @@ Dwuetapowy wizard:
 
 Po zatwierdzeniu: generuje `id`, zapisuje wpis do `cv_index`, przekierowuje do `/app/[id]`.
 
-**`/app/[id]` — Edytor CV**
+**`/app/[id]` — Edytor CV (gość)**
 Główny widok produktu. Formularz po lewej, live preview A4 po prawej. Nawigacja po sekcjach w lewym panelu. Na mobile: przełącznik Edytuj / Podgląd.
+
+### Opis widoków — auth *(przyszłość)*
+
+**`/auth/login`** — Formularz logowania. Po pomyślnym logowaniu redirect do `/dashboard`.
+
+**`/auth/register`** — Formularz rejestracji. Opcjonalnie: import lokalnych CV z localStorage na konto (`?import=true`).
+
+**`/auth/forgot-password`** — Resetowanie hasła przez e-mail.
+
+**`/dashboard`** — Panel zalogowanego użytkownika. Lista CV pobieranych z serwera. Akcje identyczne jak w `/app`, ale dane persystowane po stronie serwera.
+
+**`/dashboard/cv/[id]`** — Edytor CV dla zalogowanego użytkownika. Komponent edytora współdzielony z `/app/[id]` — różni się wyłącznie warstwą danych (API zamiast localStorage).
 
 ### Modalne okna w edytorze
 
@@ -89,7 +117,7 @@ Główny widok produktu. Formularz po lewej, live preview A4 po prawej. Nawigacj
 | Import JSON     | przycisk "Wczytaj CV"   | drop zone na plik JSON                                                                    |
 | Usuń CV         | akcja z dashboardu      | potwierdzenie usunięcia                                                                   |
 
-### Główny przepływ użytkownika
+### Przepływ użytkownika — tryb gościa
 
 ```
 Landing
@@ -101,11 +129,23 @@ Landing
   └─► [Wczytaj CV] ──► /app/[id] (edytor z danymi z JSON)
 ```
 
-### Przepływ powracającego użytkownika
+### Przepływ powracającego użytkownika — tryb gościa
 
 ```
 /app (dashboard)
   └─► kafelek CV ──► /app/[id] (edytor, dane z localStorage)
+```
+
+### Przepływ użytkownika — tryb konta *(przyszłość)*
+
+```
+Landing
+  └─► [Zaloguj się] ──► /auth/login ──► /dashboard
+  └─► [Utwórz konto] ──► /auth/register ──► /dashboard
+
+/dashboard
+  └─► [Nowe CV] ──► /dashboard/cv/new ──► /dashboard/cv/[id] (edytor)
+  └─► kafelek CV ──► /dashboard/cv/[id] (edytor, dane z serwera)
 ```
 
 ---
@@ -609,4 +649,4 @@ const withPWA = require('next-pwa')({
 
 ---
 
-_Ostatnia aktualizacja: 2026-03-24_
+_Ostatnia aktualizacja: 2026-03-29_
