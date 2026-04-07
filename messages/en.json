@@ -127,6 +127,18 @@
       }
     }
   },
+  "editor": {
+    "backToDashboard": "My CVs",
+    "backToHome": "Home",
+    "back": "Back",
+    "backTooltip": "Save as draft and return to dashboard",
+    "delete": "Delete CV",
+    "deleteTooltip": "Permanently delete this CV project",
+    "deleteConfirmTitle": "Delete CV?",
+    "deleteConfirmMessage": "This action is irreversible. The CV project will be permanently deleted.",
+    "deleteConfirmButton": "Yes, delete",
+    "sidebarEmpty": "Side panel"
+  },
   "finalCta": {
     "titlePart1": "Your CV is not a request —",
     "titleHighlight": "it's an offer.",

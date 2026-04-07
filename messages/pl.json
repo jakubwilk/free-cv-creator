@@ -127,6 +127,18 @@
       }
     }
   },
+  "editor": {
+    "backToDashboard": "Moje CV",
+    "backToHome": "Strona główna",
+    "back": "Powrót",
+    "backTooltip": "Zapisz jako szkic i wróć do panelu",
+    "delete": "Usuń CV",
+    "deleteTooltip": "Trwale usuń ten projekt CV",
+    "deleteConfirmTitle": "Usuń CV?",
+    "deleteConfirmMessage": "Ta operacja jest nieodwracalna. Projekt CV zostanie trwale usunięty.",
+    "deleteConfirmButton": "Tak, usuń",
+    "sidebarEmpty": "Panel boczny"
+  },
   "finalCta": {
     "titlePart1": "Twoje CV to nie prośba —",
     "titleHighlight": "to oferta.",
