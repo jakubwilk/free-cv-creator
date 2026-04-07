@@ -19,6 +19,7 @@
     "@mantine/notifications": "^8.3.18",
     "@mantine/spotlight": "^8.3.18",
     "@mantine/tiptap": "^8.3.18",
+    "@react-pdf/renderer": "^4.4.0",
     "@tabler/icons-react": "^3.40.0",
     "@tiptap/extension-link": "^3.20.5",
     "@tiptap/pm": "^3.20.5",
