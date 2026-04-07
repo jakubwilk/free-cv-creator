@@ -29,11 +29,7 @@ export function HeroSection() {
   const t = useTranslations('hero');
 
   return (
-    <Box
-      component="section"
-      className="flex items-center py-16 bg-white"
-      style={{ minHeight: 'calc(100vh - 64px)' }}
-    >
+    <Box component="section" className="flex items-center py-16 bg-white min-h-[calc(100vh-64px)]">
       <Container size="xl" className="w-full">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
           {/* Left column */}
@@ -121,10 +117,8 @@ export function HeroSection() {
                   c="gray.5"
                   lh={1.6}
                   maw={400}
-                  style={{
-                    borderLeft: '2px solid var(--mantine-color-blue-5)',
-                    paddingLeft: '12px',
-                  }}
+                  className="pl-3"
+                  style={{ borderLeft: '2px solid var(--mantine-color-blue-5)' }}
                 >
                   {t('manifesto')}
                 </Text>

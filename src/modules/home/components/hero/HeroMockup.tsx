@@ -3,20 +3,15 @@ import { Box, Group } from '@mantine/core';
 export function HeroMockup() {
   return (
     <Box
-      className="hero-mockup-float mx-auto"
+      className="hero-mockup-float mx-auto filter-[drop-shadow(0_24px_48px_rgba(0,0,0,0.15))]"
       maw={340}
-      style={{ filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.15))' }}
     >
       <Box
         className="relative overflow-hidden w-full rounded-lg aspect-[1/1.414] bg-white"
         style={{ border: '1px solid var(--mantine-color-gray-2)' }}
       >
         {/* Blue header */}
-        <Box
-          className="flex flex-col justify-center gap-[6px] px-5 py-4"
-          bg="blue.6"
-          style={{ height: '22%' }}
-        >
+        <Box className="flex flex-col justify-center gap-[6px] px-5 py-4 h-[22%]" bg="blue.6">
           <Box className="h-[14px] w-[60%] rounded bg-white/90" />
           <Box className="h-[9px] w-[40%] rounded bg-white/60" />
           <Box className="h-[8px] w-[50%] rounded mt-[2px] bg-white/50" />

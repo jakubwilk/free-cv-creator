@@ -1,5 +1,8 @@
 .card {
-  transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+  transition:
+    border-color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
 }
 .card:hover {
   border-color: var(--mantine-color-blue-8) !important;

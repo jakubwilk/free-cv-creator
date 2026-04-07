@@ -62,7 +62,6 @@ export function FeaturesSection() {
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.4, ease: 'easeOut', delay: index * 0.07 }}
                 className="h-full"
-                style={{ height: '100%' }}
               >
                 <Box
                   className={`${styles.card} h-full rounded-xl p-6`}

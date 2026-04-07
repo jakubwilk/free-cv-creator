@@ -10,7 +10,7 @@ interface Template {
 
 function ModernMockup() {
   return (
-    <Box className="bg-white" style={{ width: 595, height: 842 }}>
+    <Box className="bg-white w-[595px] h-[842px]">
       {/* Blue header */}
       <Box className="p-10 text-white" bg="blue.6">
         <Box className="h-6 w-[55%] rounded mb-[10px] bg-white/90" />
@@ -63,7 +63,7 @@ function ModernMockup() {
 
 function ClassicMockup() {
   return (
-    <Box className="flex bg-white" style={{ width: 595, height: 842 }}>
+    <Box className="flex bg-white w-[595px] h-[842px]">
       {/* Dark sidebar */}
       <Box className="flex flex-col gap-4 px-5 py-8 w-[32%]" bg="dark.8">
         <Box className="w-[60px] h-[60px] rounded-full mb-2" bg="blue.6" />
@@ -106,7 +106,7 @@ function ClassicMockup() {
 
 function MinimalMockup() {
   return (
-    <Box className="bg-white" style={{ width: 595, height: 842 }}>
+    <Box className="bg-white w-[595px] h-[842px]">
       {/* Top accent bar */}
       <Box className="h-1 w-full" bg="gray.3" />
       <Box className="p-10">
@@ -147,10 +147,7 @@ export function TemplateMockupCard({ template }: { template: Template }) {
   return (
     <Box className={styles.card}>
       <Box className="h-80 overflow-hidden relative" bg="gray.0">
-        <Box
-          className="absolute top-0 left-0"
-          style={{ transformOrigin: 'top left', transform: 'scale(0.52)' }}
-        >
+        <Box className="absolute top-0 left-0 origin-top-left scale-[0.52]">
           {template.variant === 'modern' && <ModernMockup />}
           {template.variant === 'classic' && <ClassicMockup />}
           {template.variant === 'minimal' && <MinimalMockup />}
