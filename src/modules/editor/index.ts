@@ -1,1 +1,2 @@
-// barrel file — add exports here
+export * from './components';
+export * from './pages';

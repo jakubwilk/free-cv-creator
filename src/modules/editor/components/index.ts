@@ -1,1 +1,1 @@
-// barrel file — add exports here
+export { EditorNavbar } from './EditorNavbar';
