@@ -45,36 +45,23 @@ export function CvCard({ cv, onDuplicate, onDelete }: ICvCardProps) {
       radius="md"
       withBorder
       padding="lg"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--mantine-spacing-md)',
-        transition: 'box-shadow 150ms ease, transform 150ms ease',
-      }}
-      className="hover:shadow-md hover:-translate-y-0.5"
+      style={{ gap: 'var(--mantine-spacing-md)' }}
+      className="flex flex-col transition-[box-shadow,transform] duration-150 ease-out hover:shadow-md hover:-translate-y-0.5"
     >
       {/* Card header */}
       <Group justify="space-between" align="flex-start" wrap="nowrap">
-        <Group gap="sm" align="center" style={{ minWidth: 0 }}>
+        <Group gap="sm" align="center" className="min-w-0">
           <Box
-            style={{
-              width: 36,
-              height: 36,
-              borderRadius: 8,
-              backgroundColor: 'var(--mantine-color-blue-0)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0,
-            }}
+            className="w-9 h-9 rounded-[8px] flex items-center justify-center shrink-0"
+            style={{ backgroundColor: 'var(--mantine-color-blue-0)' }}
           >
             <IconFileText size={18} color="var(--mantine-color-blue-6)" stroke={1.5} />
           </Box>
-          <Box style={{ minWidth: 0 }}>
+          <Box className="min-w-0">
             <Text fw={600} c="dark.9" truncate="end" title={cv.name}>
               {cv.name}
             </Text>
-            <Badge variant="light" color="blue" size="xs" mt={2} style={{ textTransform: 'none' }}>
+            <Badge variant="light" color="blue" size="xs" mt={2} className="normal-case">
               {cv.templateId}
             </Badge>
           </Box>

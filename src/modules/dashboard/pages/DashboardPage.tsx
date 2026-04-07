@@ -16,7 +16,7 @@ export function DashboardPage() {
   };
 
   return (
-    <Box style={{ minHeight: '100vh', backgroundColor: 'var(--mantine-color-gray-0)' }}>
+    <Box className="min-h-screen" style={{ backgroundColor: 'var(--mantine-color-gray-0)' }}>
       <DashboardNavbar />
 
       <Container size="xl" py="xl">

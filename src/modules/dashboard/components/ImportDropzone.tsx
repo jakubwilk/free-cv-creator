@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Group, rem, Stack, Text } from '@mantine/core';
+import { Box, Group, Stack, Text } from '@mantine/core';
 import { Dropzone } from '@mantine/dropzone';
 import { notifications } from '@mantine/notifications';
 import { IconFileUpload, IconUpload, IconX } from '@tabler/icons-react';
@@ -63,24 +63,27 @@ export function ImportDropzone({ onImport }: IImportDropzoneProps) {
       accept={{ 'application/json': ['.json'] }}
       maxFiles={1}
       radius="md"
-      style={{ cursor: 'pointer' }}
+      className="cursor-pointer"
     >
-      <Group justify="center" gap="xl" mih={120} style={{ pointerEvents: 'none' }} align="center">
+      <Group justify="center" gap="xl" mih={120} className="pointer-events-none" align="center">
         <Dropzone.Accept>
           <IconUpload
-            style={{ width: rem(40), height: rem(40), color: 'var(--mantine-color-blue-6)' }}
+            className="w-10 h-10"
+            style={{ color: 'var(--mantine-color-blue-6)' }}
             stroke={1.5}
           />
         </Dropzone.Accept>
         <Dropzone.Reject>
           <IconX
-            style={{ width: rem(40), height: rem(40), color: 'var(--mantine-color-red-6)' }}
+            className="w-10 h-10"
+            style={{ color: 'var(--mantine-color-red-6)' }}
             stroke={1.5}
           />
         </Dropzone.Reject>
         <Dropzone.Idle>
           <IconFileUpload
-            style={{ width: rem(40), height: rem(40), color: 'var(--mantine-color-gray-4)' }}
+            className="w-10 h-10"
+            style={{ color: 'var(--mantine-color-gray-4)' }}
             stroke={1.5}
           />
         </Dropzone.Idle>

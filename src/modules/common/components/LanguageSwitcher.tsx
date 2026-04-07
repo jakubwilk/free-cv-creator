@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Menu, rem, Text } from '@mantine/core';
+import { ActionIcon, Menu, Text } from '@mantine/core';
 import { IconCheck, IconLanguage } from '@tabler/icons-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useTransition } from 'react';
@@ -35,7 +35,7 @@ export function LanguageSwitcher() {
           loading={isPending}
           aria-label={t('ariaLabel')}
         >
-          <IconLanguage style={{ width: rem(18), height: rem(18) }} />
+          <IconLanguage size={18} />
         </ActionIcon>
       </Menu.Target>
 
