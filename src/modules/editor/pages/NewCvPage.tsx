@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 
 import { useRouter } from '@/i18n/navigation';
 
-import { EditorNavbar } from '../components/EditorNavbar';
+import { EditorNavbar, EditorSidebar } from '../components';
 
 export function NewCvPage() {
   const t = useTranslations('editor');
@@ -31,7 +31,7 @@ export function NewCvPage() {
       navbar={{ width: 280, breakpoint: 'md', collapsed: { mobile: !mobileNavOpen } }}
       withBorder={false}
     >
-      <AppShell.Navbar style={{ borderRight: '1px solid var(--mantine-color-gray-3)' }}>
+      <AppShell.Navbar style={{ borderRight: '1px solid var(--mantine-color-gray-3)', overflowX: 'hidden' }}>
         <div
           className="flex items-center min-h-16 h-16 px-4"
           style={{ borderBottom: '1px solid var(--mantine-color-gray-3)' }}
@@ -39,7 +39,9 @@ export function NewCvPage() {
           <AppLogo />
         </div>
 
-        <Box className="h-full" />
+        <div className="flex-1 min-h-0">
+          <EditorSidebar />
+        </div>
       </AppShell.Navbar>
 
       <AppShell.Header style={{ borderBottom: '1px solid var(--mantine-color-gray-3)' }}>
