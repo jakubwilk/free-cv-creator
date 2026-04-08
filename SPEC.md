@@ -628,7 +628,127 @@ import { SomeComponent } from '@dashboard/components';
 
 ---
 
-## 11. PWA
+## 11. Szablony CV
+
+### Przegląd
+
+Aplikacja oferuje 5 szablonów CV na launch. Każdy szablon istnieje w **dwóch wersjach renderowania**:
+
+- **HTML preview** — React + Tailwind CSS, wyświetlany w edytorze jako live preview
+- **PDF** — `@react-pdf/renderer`, generowany przy eksporcie
+
+Szablony żyją w `src/modules/editor/templates/`. Każdy szablon to podfolder z dwoma plikami:
+- `[Name]Template.tsx` — wersja HTML
+- `[Name]PdfTemplate.tsx` — wersja react-pdf
+
+### Kontrakt interfejsu szablonu
+
+Każdy szablon przyjmuje identyczne props:
+
+```typescript
+interface TemplateProps {
+  data: CVData;
+  accentColor?: string; // override domyślnego koloru akcentu szablonu
+}
+```
+
+### Rejestr szablonów
+
+```typescript
+// src/modules/editor/templates/registry.ts
+export type TemplateId = 'slate' | 'ivory' | 'coral' | 'grid' | 'arc';
+
+export interface TemplateDefinition {
+  id: TemplateId;
+  name: string;              // wyświetlana nazwa
+  defaultAccentColor: string; // domyślny kolor HEX
+  component: React.ComponentType<TemplateProps>;
+  pdfComponent: React.ComponentType<TemplateProps>;
+  personas: string[];        // grupy docelowe
+  atsScore: 'high' | 'medium'; // poziom kompatybilności z ATS
+  hasPhoto: boolean;
+  columns: 1 | 2;
+}
+```
+
+### 5 szablonów
+
+#### 1. Slate — Software Developer / Engineer
+- **Layout:** 2-kolumnowy, ciemny sidebar 32% / treść 68%
+- **Kolory:** sidebar `#1e293b`, akcent `#3b82f6` (niebieski), tło `#ffffff`
+- **Typografia:** Inter 700 (imię), Inter 400/500 (treść)
+- **Wyróżniki:** progress bary umiejętności (1–5), okrągłe zdjęcie 72px, chip-tagi, ikony kontaktu
+- **Sekcje (kolejność):** contact + skills + languages (sidebar) | summary + experience + education + projects (main)
+- **ATS:** wysoka | **Zdjęcie:** tak | **Kolumny:** 2
+
+#### 2. Ivory — Executive / Senior Manager
+- **Layout:** 1-kolumnowy, szerokie marginesy, elegancja
+- **Kolory:** tło `#fffef9`, akcent `#b45309` (złoto), tekst `#1c1917`
+- **Typografia:** Cormorant Garamond 700 (imię/headings), Source Sans 3 400 (treść)
+- **Wyróżniki:** serif display font, summary w ramce z lewą linią `border-l-2`, timeline grid (data 80px + treść), tagi jako plaintext z `·`
+- **Sekcje (kolejność):** summary | experience | education | skills | languages | certifications
+- **ATS:** bardzo wysoka | **Zdjęcie:** opcjonalnie | **Kolumny:** 1
+
+#### 3. Coral — Creative / Designer / Marketing
+- **Layout:** 1-kolumnowy z kolorowym blokiem nagłówka (pełna szerokość)
+- **Kolory:** header `#e85d4a`, chip background `#fde8e6`, tekst `#2d3748`
+- **Typografia:** Plus Jakarta Sans 800 (imię), Plus Jakarta Sans 400 (treść)
+- **Wyróżniki:** kolorowy header z zdjęciem 80px, skill chips `rounded-full`, lewa linia kolorowa sekcji `border-l-4`, 3-kolumnowa stopka (edukacja/języki/hobby)
+- **Sekcje (kolejność):** header | about | experience | skills | [3-col: education + languages + interests]
+- **ATS:** średnia (świadomy kompromis dla branży kreatywnej) | **Zdjęcie:** tak | **Kolumny:** 1
+
+#### 4. Grid — Data Analyst / Finance / Consulting
+- **Layout:** 2-kolumnowy 60% / 40% (odwrotność Slate — treść po lewej, dane po prawej)
+- **Kolory:** navy `#1a3a5c`, akcent `#0ea5e9`, tło metryk `#eff6ff`, tekst metryk `#1e40af`
+- **Typografia:** IBM Plex Sans 700 (headings), IBM Plex Sans 400 (treść)
+- **Wyróżniki:** bloki metryk osiągnięć inline (np. `↑ +18%`), znacznik `▶` przed pozycjami, kompaktowe listy, header pełnej szerokości
+- **Sekcje (kolejność):** header | [left: experience + projects] | [right: skills + education + certifications + languages]
+- **ATS:** wysoka | **Zdjęcie:** nie | **Kolumny:** 2
+
+#### 5. Arc — Academic / Researcher / PhD
+- **Layout:** 1-kolumnowy, wycentrowany nagłówek, klasyczny
+- **Kolory:** tekst `#0d1b2a`, akcent `#7c3aed` (fiolet), muted `#5c6b7e`
+- **Typografia:** Crimson Pro 600/700 (headings), Source Serif 4 400 (treść)
+- **Wyróżniki:** wycentrowany nagłówek z seryfem, fioletowa linia pod nagłówkami sekcji, timeline grid (kolumna daty 70px), sekcja publikacji z rankingami konferencji (CORE A*/Q1), wielostronicowy
+- **Sekcje (kolejność):** summary | experience | education | publications | skills | languages | certifications
+- **ATS:** bardzo wysoka | **Zdjęcie:** nie | **Kolumny:** 1
+
+### Lokalizacja plików
+
+```
+src/modules/editor/templates/
+├── registry.ts              # rejestr szablonów + TemplateId + TemplateDefinition
+├── index.ts                 # barrel file
+├── slate/
+│   ├── SlateTemplate.tsx    # HTML preview
+│   └── SlatePdfTemplate.tsx # react-pdf export
+├── ivory/
+│   ├── IvoryTemplate.tsx
+│   └── IvoryPdfTemplate.tsx
+├── coral/
+│   ├── CoralTemplate.tsx
+│   └── CoralPdfTemplate.tsx
+├── grid/
+│   ├── GridTemplate.tsx
+│   └── GridPdfTemplate.tsx
+└── arc/
+    ├── ArcTemplate.tsx
+    └── ArcPdfTemplate.tsx
+```
+
+### Uwagi implementacyjne
+
+1. **Dwa systemy renderowania:** HTML preview używa Tailwind CSS + inline styles. PDF używa `@react-pdf/renderer` z własnymi prymitywami (`Document`, `Page`, `View`, `Text`, `Image`, `Link`). Każdy szablon musi mieć OBIE wersje.
+2. **ATS w react-pdf:** W szablonach dwukolumnowych (`Slate`, `Grid`) kolejność elementów w JSX musi odpowiadać kolejności semantycznej — parsery ATS czytają tekst liniowo. Użyć `flexDirection: 'row'` w `View`, ale zadbać o właściwą kolejność dzieci.
+3. **Custom fonts w react-pdf:** Cormorant Garamond, Source Sans 3, IBM Plex Sans, Crimson Pro, Source Serif 4 wymagają embedowania plików `.ttf` przez `Font.register()`. Pliki font umieścić w `public/fonts/`.
+4. **Photo w PDF:** base64 z `PersonalInfo.photo` — wymagany format dla `@react-pdf/renderer`.
+5. **Page breaks:** `break-inside: avoid` na blokach sekcji (HTML). W react-pdf: `wrap={false}` na elementach, które nie mogą być rozdzielone między stronami.
+6. **Progress bary (Slate):** W HTML — `div` z `width` jako procent. W react-pdf — `View` z solidnym `backgroundColor` (bez gradientów, które nie są obsługiwane).
+7. **WCAG AA:** Wszystkie szablony muszą zachować kontrast min. 4.5:1 dla tekstu normalnego, 3:1 dla dużego tekstu.
+
+---
+
+## 12. PWA
 
 ### Wymagania
 
