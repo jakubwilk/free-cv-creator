@@ -137,7 +137,24 @@
     "deleteConfirmTitle": "Delete CV?",
     "deleteConfirmMessage": "This action is irreversible. The CV project will be permanently deleted.",
     "deleteConfirmButton": "Yes, delete",
-    "sidebarEmpty": "Side panel"
+    "sidebarEmpty": "Side panel",
+    "templatePickerTitle": "Template",
+    "tabs": {
+      "personal": "Personal Info",
+      "personalDesc": "Contact, photo & summary",
+      "experience": "Experience",
+      "experienceDesc": "Work history",
+      "education": "Education",
+      "educationDesc": "Universities & schools",
+      "skills": "Skills",
+      "skillsDesc": "Competencies & languages",
+      "projects": "Projects",
+      "projectsDesc": "Personal & commercial projects",
+      "certifications": "Certifications",
+      "certificationsDesc": "Certificates & courses",
+      "extra": "Additional",
+      "extraDesc": "Volunteering, interests & more"
+    }
   },
   "finalCta": {
     "titlePart1": "Your CV is not a request —",

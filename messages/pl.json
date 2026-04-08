@@ -137,7 +137,24 @@
     "deleteConfirmTitle": "Usuń CV?",
     "deleteConfirmMessage": "Ta operacja jest nieodwracalna. Projekt CV zostanie trwale usunięty.",
     "deleteConfirmButton": "Tak, usuń",
-    "sidebarEmpty": "Panel boczny"
+    "sidebarEmpty": "Panel boczny",
+    "templatePickerTitle": "Szablon",
+    "tabs": {
+      "personal": "Dane osobowe",
+      "personalDesc": "Kontakt, zdjęcie, podsumowanie",
+      "experience": "Doświadczenie",
+      "experienceDesc": "Historia zatrudnienia",
+      "education": "Wykształcenie",
+      "educationDesc": "Uczelnie i szkoły",
+      "skills": "Umiejętności",
+      "skillsDesc": "Kompetencje i języki obce",
+      "projects": "Projekty",
+      "projectsDesc": "Własne i komercyjne projekty",
+      "certifications": "Certyfikaty",
+      "certificationsDesc": "Certyfikaty i kursy",
+      "extra": "Dodatkowe",
+      "extraDesc": "Wolontariat, zainteresowania i inne"
+    }
   },
   "finalCta": {
     "titlePart1": "Twoje CV to nie prośba —",
