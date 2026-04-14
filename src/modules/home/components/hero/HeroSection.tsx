@@ -117,8 +117,7 @@ export function HeroSection() {
                   c="gray.5"
                   lh={1.6}
                   maw={400}
-                  className="pl-3"
-                  style={{ borderLeft: '2px solid var(--mantine-color-blue-5)' }}
+                  style={{ borderLeft: '2px solid var(--mantine-color-blue-5)', paddingLeft: 16 }}
                 >
                   {t('manifesto')}
                 </Text>
