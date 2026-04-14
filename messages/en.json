@@ -138,6 +138,7 @@
     "deleteConfirmMessage": "This action is irreversible. The CV project will be permanently deleted.",
     "deleteConfirmButton": "Yes, delete",
     "sidebarEmpty": "Side panel",
+    "closeNav": "Close navigation",
     "save": "Save",
     "templatePickerTitle": "Template",
     "templatePanel": {
@@ -148,6 +149,7 @@
       "emptyBody": "No template matches \"{query}\".",
       "drawerTitle": "Choose template",
       "changeTemplate": "Change template",
+      "close": "Close template panel",
       "createCustomTemplate": "Create your own template"
     },
     "tabs": {
