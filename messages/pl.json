@@ -138,7 +138,18 @@
     "deleteConfirmMessage": "Ta operacja jest nieodwracalna. Projekt CV zostanie trwale usunięty.",
     "deleteConfirmButton": "Tak, usuń",
     "sidebarEmpty": "Panel boczny",
+    "save": "Zapisz",
     "templatePickerTitle": "Szablon",
+    "templatePanel": {
+      "title": "Szablon",
+      "searchPlaceholder": "Szukaj szablonu...",
+      "searchAriaLabel": "Szukaj szablonu",
+      "emptyHeading": "Brak wyników",
+      "emptyBody": "Żaden szablon nie pasuje do \"{query}\".",
+      "drawerTitle": "Wybierz szablon",
+      "changeTemplate": "Zmień szablon",
+      "createCustomTemplate": "Stwórz własny szablon"
+    },
     "tabs": {
       "personal": "Dane osobowe",
       "personalDesc": "Kontakt, zdjęcie, podsumowanie",

@@ -138,7 +138,18 @@
     "deleteConfirmMessage": "This action is irreversible. The CV project will be permanently deleted.",
     "deleteConfirmButton": "Yes, delete",
     "sidebarEmpty": "Side panel",
+    "save": "Save",
     "templatePickerTitle": "Template",
+    "templatePanel": {
+      "title": "Template",
+      "searchPlaceholder": "Search templates...",
+      "searchAriaLabel": "Search templates",
+      "emptyHeading": "No results",
+      "emptyBody": "No template matches \"{query}\".",
+      "drawerTitle": "Choose template",
+      "changeTemplate": "Change template",
+      "createCustomTemplate": "Create your own template"
+    },
     "tabs": {
       "personal": "Personal Info",
       "personalDesc": "Contact, photo & summary",
