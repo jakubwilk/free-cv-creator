@@ -1,7 +1,8 @@
 'use client';
 
 import { AppLogo } from '@common/components';
-import { AppShell, Box, Text } from '@mantine/core';
+import { ActionIcon, AppShell, Box, Text } from '@mantine/core';
+import { IconX } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -41,10 +42,20 @@ export function NewCvPage() {
         style={{ borderRight: '1px solid var(--mantine-color-gray-3)' }}
       >
         <div
-          className="flex items-center min-h-16 h-16 px-4"
+          className="flex items-center justify-between min-h-16 h-16 px-4"
           style={{ borderBottom: '1px solid var(--mantine-color-gray-3)' }}
         >
           <AppLogo />
+          <ActionIcon
+            variant="subtle"
+            color="gray"
+            size="sm"
+            hiddenFrom="md"
+            onClick={toggleMobileNav}
+            aria-label={t('closeNav')}
+          >
+            <IconX size={14} />
+          </ActionIcon>
         </div>
 
         <div className="flex-1 min-h-0">
@@ -56,7 +67,11 @@ export function NewCvPage() {
         className="overflow-x-hidden"
         style={{ borderLeft: '1px solid var(--mantine-color-gray-3)' }}
       >
-        <TemplatePanel activeTemplate={activeTemplate} onTemplateChange={setActiveTemplate} />
+        <TemplatePanel
+          activeTemplate={activeTemplate}
+          onTemplateChange={setActiveTemplate}
+          onClose={toggleAside}
+        />
       </AppShell.Aside>
 
       <AppShell.Header style={{ borderBottom: '1px solid var(--mantine-color-gray-3)' }}>

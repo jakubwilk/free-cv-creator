@@ -27,8 +27,8 @@ export function EditorNavbar({
 
   const handleDeleteClick = () => {
     modals.openConfirmModal({
-      title: t('deleteConfirmTitle'),
-      children: <Text size="sm">{t('deleteConfirmMessage')}</Text>,
+      title: <Text fw={600} c="gray.8">{t('deleteConfirmTitle')}</Text>,
+      children: <Text size="sm" c="gray.7">{t('deleteConfirmMessage')}</Text>,
       labels: { confirm: t('deleteConfirmButton'), cancel: t('back') },
       confirmProps: { color: 'red' },
       onConfirm: onDelete,
@@ -42,7 +42,7 @@ export function EditorNavbar({
         <LanguageSwitcher />
         <Anchor component={Link} href="/" c="gray.6" fz="sm" fw={500} underline="never">
           <Group gap={4} align="center">
-            <IconHome size={14} />
+            <IconHome size={20} />
             <Text component="span" fz="sm" fw={500} visibleFrom="sm">
               {t('backToHome')}
             </Text>
@@ -59,7 +59,7 @@ export function EditorNavbar({
               onClick={onToggleAside}
               aria-label={t('templatePanel.changeTemplate')}
             >
-              <IconLayoutCards size={18} />
+              <IconLayoutCards size={20} />
             </ActionIcon>
           </Tooltip>
         </Box>
@@ -70,7 +70,7 @@ export function EditorNavbar({
         </Tooltip>
         <Tooltip label={t('deleteTooltip')} position="bottom">
           <ActionIcon variant="subtle" color="red" onClick={handleDeleteClick}>
-            <IconTrash size={15} />
+            <IconTrash size={20} />
           </ActionIcon>
         </Tooltip>
       </Group>

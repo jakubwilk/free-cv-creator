@@ -1,7 +1,9 @@
 'use client';
 
 import {
+  ActionIcon,
   Button,
+  Group,
   ScrollArea,
   Skeleton,
   Stack,
@@ -11,7 +13,7 @@ import {
   UnstyledButton,
 } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
-import { IconLayoutCards, IconSearch, IconSparkles } from '@tabler/icons-react';
+import { IconLayoutCards, IconSearch, IconSparkles, IconX } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
@@ -21,9 +23,10 @@ import { TEMPLATES } from '../templates/registry';
 interface TemplatePanelProps {
   activeTemplate: TemplateId;
   onTemplateChange: (id: TemplateId) => void;
+  onClose: () => void;
 }
 
-export function TemplatePanel({ activeTemplate, onTemplateChange }: TemplatePanelProps) {
+export function TemplatePanel({ activeTemplate, onTemplateChange, onClose }: TemplatePanelProps) {
   const t = useTranslations('editor.templatePanel');
   const [query, setQuery] = useState('');
   const [debouncedQuery] = useDebouncedValue(query, 200);
@@ -45,9 +48,21 @@ export function TemplatePanel({ activeTemplate, onTemplateChange }: TemplatePane
         className="shrink-0 px-4 pt-3 pb-3"
         style={{ borderBottom: '1px solid var(--mantine-color-gray-2)' }}
       >
-        <Text size="xs" fw={600} c="gray.7" tt="uppercase" lts={0.5} mb={8}>
-          {t('title')}
-        </Text>
+        <Group justify="space-between" mb={8}>
+          <Text size="xs" fw={600} c="gray.7" tt="uppercase" lts={0.5}>
+            {t('title')}
+          </Text>
+          <ActionIcon
+            variant="subtle"
+            color="gray"
+            size="sm"
+            hiddenFrom="lg"
+            onClick={onClose}
+            aria-label={t('close')}
+          >
+            <IconX size={14} />
+          </ActionIcon>
+        </Group>
         <TextInput
           placeholder={t('searchPlaceholder')}
           aria-label={t('searchAriaLabel')}
