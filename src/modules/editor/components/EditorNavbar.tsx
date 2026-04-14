@@ -1,9 +1,9 @@
 'use client';
 
 import { LanguageSwitcher } from '@common/components';
-import { ActionIcon, Anchor, Burger, Button, Group, Text, Tooltip } from '@mantine/core';
+import { ActionIcon, Anchor, Box, Burger, Button, Group, Text, Tooltip } from '@mantine/core';
 import { modals } from '@mantine/modals';
-import { IconHome, IconTrash } from '@tabler/icons-react';
+import { IconHome, IconLayoutCards, IconTrash } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/navigation';
@@ -11,6 +11,7 @@ import { Link } from '@/i18n/navigation';
 interface IEditorNavbarProps {
   mobileNavOpen: boolean;
   onToggleMobileNav: () => void;
+  onToggleAside: () => void;
   onCancel: () => void;
   onDelete: () => void;
 }
@@ -18,6 +19,7 @@ interface IEditorNavbarProps {
 export function EditorNavbar({
   mobileNavOpen,
   onToggleMobileNav,
+  onToggleAside,
   onCancel,
   onDelete,
 }: IEditorNavbarProps) {
@@ -49,6 +51,18 @@ export function EditorNavbar({
       </Group>
 
       <Group gap="xs">
+        <Box hiddenFrom="lg">
+          <Tooltip label={t('templatePanel.changeTemplate')} position="bottom">
+            <ActionIcon
+              variant="subtle"
+              color="gray"
+              onClick={onToggleAside}
+              aria-label={t('templatePanel.changeTemplate')}
+            >
+              <IconLayoutCards size={18} />
+            </ActionIcon>
+          </Tooltip>
+        </Box>
         <Tooltip label={t('backTooltip')} position="bottom">
           <Button variant="default" size="sm" onClick={onCancel}>
             {t('back')}

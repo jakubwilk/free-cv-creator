@@ -1,20 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
-import { Divider, NavLink, Skeleton, Text, UnstyledButton } from '@mantine/core';
+import { Button, NavLink } from '@mantine/core';
 import {
   IconBriefcase,
   IconCertificate,
   IconCode,
+  IconDeviceFloppy,
   IconDots,
   IconSchool,
   IconStar,
   IconUser,
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-
-import type { TemplateId } from '../templates/_shared';
+import { useEffect, useState } from 'react';
 
 type TabValue =
   | 'personal'
@@ -87,14 +85,6 @@ const TABS: TabDefinition[] = [
   },
 ];
 
-const TEMPLATE_MOCKS: { id: TemplateId; name: string }[] = [
-  { id: 'slate', name: 'Slate' },
-  { id: 'ivory', name: 'Ivory' },
-  { id: 'coral', name: 'Coral' },
-  { id: 'grid', name: 'Grid' },
-  { id: 'arc', name: 'Arc' },
-];
-
 function getTabFromHash(hash: string): TabValue {
   const stripped = hash.startsWith('#') ? hash.slice(1) : hash;
   const match = TABS.find((tab) => tab.hash === stripped);
@@ -103,12 +93,11 @@ function getTabFromHash(hash: string): TabValue {
 
 export function EditorSidebar() {
   const t = useTranslations('editor');
-  const [activeTab, setActiveTab] = useState<TabValue>('personal');
-  const [activeTemplate, setActiveTemplate] = useState<TemplateId>('slate');
+  const [activeTab, setActiveTab] = useState<TabValue>(() =>
+    typeof window !== 'undefined' ? getTabFromHash(window.location.hash) : 'personal'
+  );
 
   useEffect(() => {
-    setActiveTab(getTabFromHash(window.location.hash));
-
     const handleHashChange = () => {
       setActiveTab(getTabFromHash(window.location.hash));
     };
@@ -125,13 +114,16 @@ export function EditorSidebar() {
     if (tab.hash === null) {
       history.pushState(null, '', window.location.pathname);
     } else {
-      window.location.hash = `#${tab.hash}`;
+      history.pushState(null, '', `#${tab.hash}`);
     }
   };
 
   return (
     <div className="h-full flex flex-col overflow-hidden">
-      <nav className="flex flex-col overflow-x-hidden py-2 shrink-0" aria-label="CV sections">
+      <nav
+        className="flex-1 flex flex-col overflow-y-auto overflow-x-hidden py-2"
+        aria-label="CV sections"
+      >
         {TABS.map((tab) => (
           <NavLink
             key={tab.value}
@@ -152,48 +144,20 @@ export function EditorSidebar() {
         ))}
       </nav>
 
-      <Divider />
-
-      <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-        <Text size="xs" fw={600} c="gray.7" px={16} pt={12} pb={8} tt="uppercase" lts={0.5}>
-          {t('templatePickerTitle')}
-        </Text>
-
-
-        <div className="flex flex-col gap-2 px-3 pb-3">
-          {TEMPLATE_MOCKS.map((tpl) => {
-            const isActive = activeTemplate === tpl.id;
-            return (
-              <UnstyledButton
-                key={tpl.id}
-                onClick={() => setActiveTemplate(tpl.id)}
-                style={{
-                  borderRadius: 'var(--mantine-radius-md)',
-                  border: `2px solid ${isActive ? 'var(--mantine-color-blue-5)' : 'transparent'}`,
-                  padding: 4,
-                  transition: 'border-color 150ms ease',
-                }}
-              >
-                <Skeleton
-                  height={148}
-                  radius="sm"
-                  animate={false}
-                  style={{ opacity: isActive ? 1 : 0.5 }}
-                />
-                <Text
-                  size="xs"
-                  fw={isActive ? 600 : 400}
-                  c={isActive ? 'blue.6' : 'gray.6'}
-                  ta="center"
-                  mt={6}
-                  mb={2}
-                >
-                  {tpl.name}
-                </Text>
-              </UnstyledButton>
-            );
-          })}
-        </div>
+      <div
+        className="shrink-0 px-4 py-3"
+        style={{ borderTop: '1px solid var(--mantine-color-gray-2)' }}
+      >
+        <Button
+          variant="filled"
+          color="green"
+          size="sm"
+          fullWidth
+          leftSection={<IconDeviceFloppy size={15} />}
+          onClick={() => console.log('save')}
+        >
+          {t('save')}
+        </Button>
       </div>
     </div>
   );
