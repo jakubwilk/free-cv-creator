@@ -12,16 +12,8 @@ import {
   IconUser,
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
 
-type TabValue =
-  | 'personal'
-  | 'experience'
-  | 'education'
-  | 'skills'
-  | 'projects'
-  | 'certifications'
-  | 'extra';
+import type { TabValue } from '@editor/hooks';
 
 interface TabDefinition {
   value: TabValue;
@@ -29,6 +21,11 @@ interface TabDefinition {
   descKey: string;
   icon: React.ReactNode;
   hash: string | null;
+}
+
+interface EditorSidebarProps {
+  activeTab: TabValue;
+  onTabChange: (tab: TabValue) => void;
 }
 
 const ICON_SIZE = 16;
@@ -85,32 +82,11 @@ const TABS: TabDefinition[] = [
   },
 ];
 
-function getTabFromHash(hash: string): TabValue {
-  const stripped = hash.startsWith('#') ? hash.slice(1) : hash;
-  const match = TABS.find((tab) => tab.hash === stripped);
-  return match ? match.value : 'personal';
-}
-
-export function EditorSidebar() {
+export function EditorSidebar({ activeTab, onTabChange }: EditorSidebarProps) {
   const t = useTranslations('editor');
-  const [activeTab, setActiveTab] = useState<TabValue>(() =>
-    typeof window !== 'undefined' ? getTabFromHash(window.location.hash) : 'personal'
-  );
-
-  useEffect(() => {
-    const handleHashChange = () => {
-      setActiveTab(getTabFromHash(window.location.hash));
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
-  }, []);
 
   const handleTabClick = (tab: TabDefinition) => {
-    setActiveTab(tab.value);
-
+    onTabChange(tab.value);
     if (tab.hash === null) {
       history.pushState(null, '', window.location.pathname);
     } else {
