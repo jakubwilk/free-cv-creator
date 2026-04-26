@@ -1,16 +1,62 @@
 'use client';
 
 import { AppLogo } from '@common/components';
-import { ActionIcon, AppShell, Box, Text } from '@mantine/core';
-import { IconX } from '@tabler/icons-react';
+import { ActionIcon, AppShell, Box, Paper, Skeleton, Stack } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import { IconX } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRouter } from '@/i18n/navigation';
 
+import { useCvData, type TabValue } from '@editor/hooks';
+import type { TemplateId } from '@editor/templates/_shared';
+
 import { EditorNavbar, EditorSidebar, TemplatePanel } from '../components';
-import type { TemplateId } from '../templates/_shared';
+import {
+  CertificationsSection,
+  EducationSection,
+  ExperienceSection,
+  PersonalSection,
+  ProjectsSection,
+  SkillsSection,
+} from '../components/sections';
+
+function SectionSkeleton() {
+  return (
+    <Stack p="md" gap="sm">
+      <Stack gap={6}>
+        <Skeleton height={20} width={180} radius="sm" />
+        <Skeleton height={14} width={260} radius="sm" />
+      </Stack>
+      <Paper p="md" radius="sm" withBorder bg="white">
+        <Stack gap="md">
+          <Skeleton height={36} radius="sm" />
+          <Box style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <Skeleton height={36} radius="sm" />
+            <Skeleton height={36} radius="sm" />
+          </Box>
+          <Skeleton height={36} radius="sm" />
+          <Box style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <Skeleton height={36} radius="sm" />
+            <Skeleton height={36} radius="sm" />
+          </Box>
+          <Skeleton height={90} radius="sm" />
+        </Stack>
+      </Paper>
+    </Stack>
+  );
+}
+
+const VALID_TABS: TabValue[] = [
+  'personal',
+  'experience',
+  'education',
+  'skills',
+  'projects',
+  'certifications',
+  'extra',
+];
 
 export function NewCvPage() {
   const t = useTranslations('editor');
@@ -18,16 +64,68 @@ export function NewCvPage() {
   const [mobileNavOpen, { toggle: toggleMobileNav }] = useDisclosure(false);
   const [asideOpen, { toggle: toggleAside }] = useDisclosure(false);
   const [activeTemplate, setActiveTemplate] = useState<TemplateId>('slate');
+  const [activeTab, setActiveTab] = useState<TabValue>('personal');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1) as TabValue;
+    if (VALID_TABS.includes(hash)) setActiveTab(hash);
+    setMounted(true);
+  }, []);
+
+  const { cvData, updatePersonal, updateSection } = useCvData();
 
   const handleCancel = () => {
-    // TODO: save draft logic
     router.push('/app');
   };
 
   const handleDelete = () => {
-    // Not applicable on /app/new — no CV exists yet
     router.push('/app');
   };
+
+  function renderSection(tab: TabValue): React.ReactNode {
+    switch (tab) {
+      case 'personal':
+        return <PersonalSection personal={cvData.personal} onChange={updatePersonal} />;
+      case 'experience':
+        return (
+          <ExperienceSection
+            section={cvData.sections.experience}
+            onChange={(s) => updateSection('experience', () => s)}
+          />
+        );
+      case 'education':
+        return (
+          <EducationSection
+            section={cvData.sections.education}
+            onChange={(s) => updateSection('education', () => s)}
+          />
+        );
+      case 'skills':
+        return (
+          <SkillsSection
+            section={cvData.sections.skills}
+            onChange={(s) => updateSection('skills', () => s)}
+          />
+        );
+      case 'projects':
+        return (
+          <ProjectsSection
+            section={cvData.sections.projects}
+            onChange={(s) => updateSection('projects', () => s)}
+          />
+        );
+      case 'certifications':
+        return (
+          <CertificationsSection
+            section={cvData.sections.certifications}
+            onChange={(s) => updateSection('certifications', () => s)}
+          />
+        );
+      default:
+        return null;
+    }
+  }
 
   return (
     <AppShell
@@ -59,7 +157,7 @@ export function NewCvPage() {
         </div>
 
         <div className="flex-1 min-h-0">
-          <EditorSidebar />
+          <EditorSidebar activeTab={activeTab} onTabChange={setActiveTab} />
         </div>
       </AppShell.Navbar>
 
@@ -85,10 +183,8 @@ export function NewCvPage() {
       </AppShell.Header>
 
       <AppShell.Main style={{ backgroundColor: 'var(--mantine-color-gray-0)' }}>
-        <Box className="h-full flex items-center justify-center">
-          <Text c="gray.4" fz="sm">
-            {t('sidebarEmpty')}
-          </Text>
+        <Box style={{ height: '100%' }}>
+          {!mounted ? <SectionSkeleton /> : renderSection(activeTab)}
         </Box>
       </AppShell.Main>
     </AppShell>
