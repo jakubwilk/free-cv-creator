@@ -167,6 +167,87 @@
       "certificationsDesc": "Certyfikaty i kursy",
       "extra": "Dodatkowe",
       "extraDesc": "Wolontariat, zainteresowania i inne"
+    },
+    "sections": {
+      "cancel": "Anuluj",
+      "deleteConfirmTitle": "Usunąć ten wpis?",
+      "deleteConfirmMessage": "Tej operacji nie można cofnąć.",
+      "deleteConfirmButton": "Usuń",
+      "moveUp": "Przesuń w górę",
+      "moveDown": "Przesuń w dół",
+      "noItems": "Brak wpisów. Kliknij przycisk poniżej, aby dodać pierwszy.",
+      "present": "Obecnie",
+      "personal": {
+        "title": "Dane osobowe",
+        "description": "Twoje dane kontaktowe, zdjęcie i podsumowanie zawodowe",
+        "firstName": "Imię",
+        "lastName": "Nazwisko",
+        "jobTitle": "Stanowisko",
+        "email": "E-mail",
+        "phone": "Telefon",
+        "location": "Lokalizacja",
+        "website": "Strona internetowa",
+        "linkedin": "Adres LinkedIn",
+        "github": "Adres GitHub",
+        "summary": "Podsumowanie zawodowe",
+        "photo": "Zdjęcie",
+        "uploadPhoto": "Prześlij zdjęcie",
+        "removePhoto": "Usuń zdjęcie",
+        "photoHint": "JPG lub PNG, maks. 2 MB. Rozmiar zostanie automatycznie zmniejszony."
+      },
+      "experience": {
+        "title": "Doświadczenie zawodowe",
+        "description": "Twoja historia zawodowa",
+        "addButton": "Dodaj doświadczenie",
+        "position": "Stanowisko",
+        "company": "Firma",
+        "location": "Lokalizacja (opcjonalnie)",
+        "startDate": "Data rozpoczęcia",
+        "endDate": "Data zakończenia",
+        "description": "Opis",
+        "highlights": "Kluczowe osiągnięcia (naciśnij Enter, aby dodać)"
+      },
+      "education": {
+        "title": "Wykształcenie",
+        "description": "Uczelnie, szkoły i inne kwalifikacje",
+        "addButton": "Dodaj wykształcenie",
+        "institution": "Uczelnia / Szkoła",
+        "degree": "Tytuł / Stopień",
+        "field": "Kierunek",
+        "startDate": "Data rozpoczęcia",
+        "endDate": "Data zakończenia",
+        "grade": "Ocena (opcjonalnie)",
+        "description": "Opis (opcjonalnie)"
+      },
+      "skills": {
+        "title": "Umiejętności",
+        "description": "Grupuj umiejętności według kategorii",
+        "addButton": "Dodaj grupę umiejętności",
+        "category": "Nazwa kategorii",
+        "skills": "Umiejętności (naciśnij Enter, aby dodać)"
+      },
+      "projects": {
+        "title": "Projekty",
+        "description": "Własne lub komercyjne projekty",
+        "addButton": "Dodaj projekt",
+        "name": "Nazwa projektu",
+        "description": "Opis",
+        "startDate": "Data rozpoczęcia (opcjonalnie)",
+        "endDate": "Data zakończenia (opcjonalnie)",
+        "url": "URL projektu (opcjonalnie)",
+        "github": "URL GitHub (opcjonalnie)",
+        "technologies": "Technologie (naciśnij Enter, aby dodać)"
+      },
+      "certifications": {
+        "title": "Certyfikaty",
+        "description": "Profesjonalne certyfikaty i uprawnienia",
+        "addButton": "Dodaj certyfikat",
+        "name": "Nazwa certyfikatu",
+        "issuer": "Wystawca",
+        "date": "Data",
+        "expiryDate": "Data ważności (opcjonalnie)",
+        "credentialUrl": "URL certyfikatu (opcjonalnie)"
+      }
     }
   },
   "finalCta": {

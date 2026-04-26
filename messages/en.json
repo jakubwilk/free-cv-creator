@@ -167,6 +167,87 @@
       "certificationsDesc": "Certificates & courses",
       "extra": "Additional",
       "extraDesc": "Volunteering, interests & more"
+    },
+    "sections": {
+      "cancel": "Cancel",
+      "deleteConfirmTitle": "Delete this item?",
+      "deleteConfirmMessage": "This action cannot be undone.",
+      "deleteConfirmButton": "Delete",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "noItems": "No items yet. Click the button below to add one.",
+      "present": "Present",
+      "personal": {
+        "title": "Personal Information",
+        "description": "Your contact details, photo and professional summary",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "jobTitle": "Job title",
+        "email": "Email",
+        "phone": "Phone",
+        "location": "Location",
+        "website": "Website",
+        "linkedin": "LinkedIn URL",
+        "github": "GitHub URL",
+        "summary": "Professional summary",
+        "photo": "Photo",
+        "uploadPhoto": "Upload photo",
+        "removePhoto": "Remove photo",
+        "photoHint": "JPG or PNG, max 2 MB. Will be resized automatically."
+      },
+      "experience": {
+        "title": "Work Experience",
+        "description": "Your professional history",
+        "addButton": "Add experience",
+        "position": "Position",
+        "company": "Company",
+        "location": "Location (optional)",
+        "startDate": "Start date",
+        "endDate": "End date",
+        "description": "Description",
+        "highlights": "Key achievements (press Enter to add)"
+      },
+      "education": {
+        "title": "Education",
+        "description": "Universities, schools and other qualifications",
+        "addButton": "Add education",
+        "institution": "Institution",
+        "degree": "Degree",
+        "field": "Field of study",
+        "startDate": "Start date",
+        "endDate": "End date",
+        "grade": "Grade (optional)",
+        "description": "Description (optional)"
+      },
+      "skills": {
+        "title": "Skills",
+        "description": "Group your skills by category",
+        "addButton": "Add skill group",
+        "category": "Category name",
+        "skills": "Skills (press Enter to add)"
+      },
+      "projects": {
+        "title": "Projects",
+        "description": "Personal or commercial projects",
+        "addButton": "Add project",
+        "name": "Project name",
+        "description": "Description",
+        "startDate": "Start date (optional)",
+        "endDate": "End date (optional)",
+        "url": "Project URL (optional)",
+        "github": "GitHub URL (optional)",
+        "technologies": "Technologies (press Enter to add)"
+      },
+      "certifications": {
+        "title": "Certifications",
+        "description": "Professional certifications and credentials",
+        "addButton": "Add certification",
+        "name": "Certification name",
+        "issuer": "Issuer",
+        "date": "Date",
+        "expiryDate": "Expiry date (optional)",
+        "credentialUrl": "Credential URL (optional)"
+      }
     }
   },
   "finalCta": {
