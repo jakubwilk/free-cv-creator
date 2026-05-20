@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from 'react';
 
-import type { CVData, CVSections, PersonalInfo } from '@editor/templates/_shared/types';
+import type { CVData, CVMeta, CVSections, PersonalInfo } from '@editor/templates/_shared/types';
 
 export function generateId(): string {
   if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
@@ -63,8 +63,8 @@ export function createEmptyCvData(): CVData {
   };
 }
 
-export function useCvData() {
-  const [cvData, setCvData] = useState<CVData>(createEmptyCvData);
+export function useCvData(initialData?: CVData) {
+  const [cvData, setCvData] = useState<CVData>(initialData ?? createEmptyCvData);
 
   const updatePersonal = useCallback((updates: Partial<PersonalInfo>) => {
     setCvData((prev) => ({
@@ -85,5 +85,12 @@ export function useCvData() {
     [],
   );
 
-  return { cvData, updatePersonal, updateSection };
+  const updateMeta = useCallback((updates: Partial<CVMeta>) => {
+    setCvData((prev) => ({
+      ...prev,
+      meta: { ...prev.meta, ...updates, updatedAt: new Date().toISOString() },
+    }));
+  }, []);
+
+  return { cvData, updatePersonal, updateSection, updateMeta };
 }
