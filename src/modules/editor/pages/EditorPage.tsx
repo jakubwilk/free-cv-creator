@@ -223,20 +223,17 @@ export function EditorPage({ initialData }: EditorPageProps) {
 
       <AppShell.Main style={{ backgroundColor: 'var(--mantine-color-gray-0)' }}>
         <div className="flex h-full">
-          {/* Form panel */}
-          <div
-            className="shrink-0 overflow-y-auto"
-            style={{
-              width: 420,
-              minWidth: 420,
-              borderRight: '1px solid var(--mantine-color-gray-3)',
-            }}
+          {/* Form panel — 50% */}
+          <ScrollArea
+            className="w-1/2"
+            type="auto"
+            style={{ borderRight: '1px solid var(--mantine-color-gray-3)' }}
           >
             {!mounted ? <SectionSkeleton /> : renderSection(activeTab)}
-          </div>
+          </ScrollArea>
 
-          {/* Preview panel */}
-          <ScrollArea className="flex-1" type="auto">
+          {/* Preview panel — 50% */}
+          <ScrollArea className="w-1/2" type="auto">
             {mounted && <CvPreviewPanel data={cvData} templateId={templateId} />}
           </ScrollArea>
         </div>

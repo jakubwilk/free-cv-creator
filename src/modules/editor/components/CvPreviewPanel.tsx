@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from 'react';
 import { getTemplate } from '@editor/templates/registry';
 import type { CVData, TemplateId } from '@editor/templates/_shared/types';
 
-const A4_WIDTH_PX = 794;
-const A4_HEIGHT_PX = 1123;
+const A4_WIDTH_PX = 595;
+const A4_HEIGHT_PX = 842;
 
 interface CvPreviewPanelProps {
   data: CVData;
