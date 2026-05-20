@@ -137,6 +137,8 @@
     "deleteConfirmTitle": "Usuń CV?",
     "deleteConfirmMessage": "Ta operacja jest nieodwracalna. Projekt CV zostanie trwale usunięty.",
     "deleteConfirmButton": "Tak, usuń",
+    "notFound": "Nie znaleziono CV",
+    "notFoundDescription": "To CV mogło zostać usunięte lub link jest nieprawidłowy.",
     "sidebarEmpty": "Panel boczny",
     "closeNav": "Zamknij menu",
     "save": "Zapisz",
