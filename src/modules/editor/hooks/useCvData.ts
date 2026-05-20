@@ -4,6 +4,13 @@ import { useCallback, useState } from 'react';
 
 import type { CVData, CVSections, PersonalInfo } from '@editor/templates/_shared/types';
 
+export function generateId(): string {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID();
+  }
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`;
+}
+
 export type TabValue =
   | 'personal'
   | 'experience'
@@ -16,7 +23,7 @@ export type TabValue =
 export function createEmptyCvData(): CVData {
   return {
     meta: {
-      id: crypto.randomUUID(),
+      id: generateId(),
       title: 'My CV',
       templateId: 'slate',
       accentColor: '#3b82f6',

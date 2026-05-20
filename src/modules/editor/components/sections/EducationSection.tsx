@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { SimpleGrid, Stack, Text, Textarea, TextInput } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 
+import { generateId } from '@editor/hooks';
 import type { EducationItem, Section } from '@editor/templates/_shared/types';
 
 import { AddItemButton, DateRangeFields, ItemCard, SectionShell } from './shared';
@@ -15,7 +16,7 @@ interface EducationSectionProps {
 
 function createEmptyItem(): EducationItem {
   return {
-    id: crypto.randomUUID(),
+    id: generateId(),
     institution: '',
     degree: '',
     field: '',

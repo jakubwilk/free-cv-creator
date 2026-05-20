@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { SimpleGrid, Stack, Text, TextInput } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 
+import { generateId } from '@editor/hooks';
 import type { ExperienceItem, Section } from '@editor/templates/_shared/types';
 
 import {
@@ -22,7 +23,7 @@ interface ExperienceSectionProps {
 
 function createEmptyItem(): ExperienceItem {
   return {
-    id: crypto.randomUUID(),
+    id: generateId(),
     position: '',
     company: '',
     location: '',

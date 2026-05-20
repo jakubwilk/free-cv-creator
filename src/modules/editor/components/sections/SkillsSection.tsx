@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Stack, Text, TextInput } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 
+import { generateId } from '@editor/hooks';
 import type { Section, SkillGroupItem } from '@editor/templates/_shared/types';
 
 import { AddItemButton, ItemCard, SectionShell, SkillTagInput } from './shared';
@@ -15,7 +16,7 @@ interface SkillsSectionProps {
 
 function createEmptyItem(): SkillGroupItem {
   return {
-    id: crypto.randomUUID(),
+    id: generateId(),
     category: '',
     skills: [],
     visible: true,

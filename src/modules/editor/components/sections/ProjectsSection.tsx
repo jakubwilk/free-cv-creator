@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { SimpleGrid, Stack, Text, TextInput } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 
+import { generateId } from '@editor/hooks';
 import type { ProjectItem, Section } from '@editor/templates/_shared/types';
 
 import {
@@ -22,7 +23,7 @@ interface ProjectsSectionProps {
 
 function createEmptyItem(): ProjectItem {
   return {
-    id: crypto.randomUUID(),
+    id: generateId(),
     name: '',
     description: '',
     startDate: '',

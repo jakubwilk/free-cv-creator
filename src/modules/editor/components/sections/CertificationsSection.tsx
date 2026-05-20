@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import { useLocale } from 'next-intl';
 import { useTranslations } from 'next-intl';
 
+import { generateId } from '@editor/hooks';
 import type { CertificationItem, Section } from '@editor/templates/_shared/types';
 
 import { AddItemButton, ItemCard, SectionShell } from './shared';
@@ -18,7 +19,7 @@ interface CertificationsSectionProps {
 
 function createEmptyItem(): CertificationItem {
   return {
-    id: crypto.randomUUID(),
+    id: generateId(),
     name: '',
     issuer: '',
     date: '',
